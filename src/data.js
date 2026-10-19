@@ -4,24 +4,24 @@ export const JOBS = [
     role: 'UX/UI Engineer',
     company: 'Portrait Displays, Inc.',
     description:
-      'End-to-end UX/UI for next-generation Calman, design system maintenance, and cross-functional collaboration with engineering.',
+      'Sole UX/UI designer for next-generation Calman: turned an expert-only calibration process into one guided, automated flow, ran usability testing, and maintain the design system.',
     mobileDescription:
-      'End-to-end UX/UI for next-generation Calman, design system maintenance, and cross-functional collaboration.',
+      'Sole UX/UI designer for next-generation Calman: one guided, automated calibration flow, usability testing, and the design system.',
   },
   {
     dates: '2021 — 2024',
     role: 'Workflow Designer',
     company: 'Portrait Displays, Inc.',
     description:
-      'Calibration workflows for studios and display manufacturers; contributed to Calibration-as-a-Service (CaaS).',
+      'Built a workflow template behind 30+ calibration workflows, cutting build time from days to minutes, for manufacturers and studios like LG, Samsung, Sony, and Netflix.',
     mobileDescription:
-      'Calibration workflows for studios and manufacturers; contributed to Calibration-as-a-Service (CaaS).',
+      'Built a template behind 30+ calibration workflows, cutting build time from days to minutes, for brands like LG, Sony, and Netflix.',
   },
   {
     dates: '2021',
     role: 'UX Designer',
-    company: 'Cruz Street: Dashprophet',
-    description: 'A read-only viewing experience for a data management platform.',
+    company: 'Cruz Street · Springboard industry project',
+    description: 'A read-only viewing experience for Dashprophet, a data management platform.',
   },
 ];
 
@@ -31,34 +31,39 @@ export const SKILL_COLUMNS = [
     label: 'Skills',
     joined: true,
     items: [
-      'UX & UI design',
-      'User research',
+      'User research & usability testing',
       'Information architecture',
+      'Interaction design',
+      'Wireframing & prototyping',
       'Design systems',
-      'Wireframing',
-      'Usability testing',
       'Accessibility',
     ],
   },
   {
     label: 'Technical',
     joined: true,
-    items: ['Agile', 'Front-end handoff', 'React, JavaScript, HTML, CSS', 'Python (working knowledge)'],
+    items: [
+      'React, JavaScript, HTML/CSS',
+      'Design-to-development handoff',
+      'AI-assisted design & prototyping',
+      'Python (working knowledge)',
+      'Agile',
+    ],
   },
   {
     label: 'Tools',
     joined: true,
-    items: ['Figma', 'Miro', 'GitLab', 'Slack', 'Adobe XD'],
+    items: ['Figma', 'Figma AI', 'Claude', 'Claude Code', 'Miro', 'Slack'],
   },
   {
     label: 'Education',
     joined: false,
-    items: ['Springboard — UX/UI Design, 2021', 'University of Washington — BA, 2016'],
+    items: ['Springboard — UX/UI Design Course', 'University of Washington — Bachelor of Arts'],
   },
   {
     label: 'Before design',
     joined: false,
-    items: ['Retail and teaching roles at Amazon, Nordstrom, and Chungdahm Learning, 2017–2021.'],
+    items: ['Amazon (Site Lead), Nordstrom, and Chungdahm Learning (ESL Instructor), 2017–2021.'],
   },
 ];
 
@@ -191,7 +196,7 @@ export const CASE_STUDY_CALMAN5 = {
           type: 'list',
           items: [
             'The calibration process became cleaner and more concise.',
-            'The template made maintenance easier and workflow creation faster.',
+            'More than 30 workflows have been built from the template, and its patterns shaped six more built outside it. Maintenance got easier and workflow creation faster.',
             'Customer Support and R&D found the extra data points much more useful for diagnosing calibration issues.',
             'There is appetite for more usability testing after releases to inform design.',
           ],
