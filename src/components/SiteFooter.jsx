@@ -1,11 +1,11 @@
 import Icon from './Icon.jsx';
-import { asset, EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/assets.js';
+import { asset, EMAIL, LINKEDIN_URL, RESUME_URL, RESUME_FILENAME } from '../lib/assets.js';
 
 const linkBase = 'inline-flex items-center gap-[10px]';
 
 function ResumeLink({ className = '' }) {
   return (
-    <a href={RESUME_URL} className={`${linkBase} font-sans text-[16px] font-medium text-paper underline ${className}`}>
+    <a href={RESUME_URL} download={RESUME_FILENAME} className={`${linkBase} font-sans text-[16px] font-medium text-paper underline ${className}`}>
       Download résumé
       <Icon name="arrow-down.svg" />
     </a>

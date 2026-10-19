@@ -4,7 +4,7 @@ import ProjectCard from '../components/ProjectCard.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
 import Icon from '../components/Icon.jsx';
 import { JOBS, SKILL_COLUMNS } from '../data.js';
-import { asset, RESUME_URL } from '../lib/assets.js';
+import { asset, RESUME_URL, RESUME_FILENAME } from '../lib/assets.js';
 
 const h2 =
   'font-serif text-[40px] font-normal leading-[1.05] tracking-[-0.015em] lg:text-[64px] lg:leading-none lg:tracking-[-0.02em]';
@@ -178,7 +178,7 @@ function About() {
           display manufacturers who need color exactly right.
         </p>
         <p className="font-sans text-[17px] leading-[1.55] text-muted lg:text-[19px]">
-          The red seal is my Korean name, <span lang="ko" className="font-kr">朴光民</span>, written
+          The red seal is my Korean name, <span lang="ko" className="font-kr">박광민</span>, written
           in hanja.
         </p>
 
@@ -211,6 +211,7 @@ function Resume() {
         <h2 className={h2}>Résumé</h2>
         <a
           href={RESUME_URL}
+          download={RESUME_FILENAME}
           className="inline-flex items-center justify-center gap-3 rounded-[2px] bg-ink px-6 py-4 font-sans text-[16px] font-medium text-paper"
         >
           Download PDF

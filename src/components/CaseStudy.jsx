@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Icon from './Icon.jsx';
-import { EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/assets.js';
+import { EMAIL, LINKEDIN_URL, RESUME_URL, RESUME_FILENAME } from '../lib/assets.js';
 
 const sectionTitle =
   'font-serif text-[28px] font-normal leading-[1.15] tracking-[-0.008em] lg:w-[264px] lg:shrink-0 lg:text-[34px]';
@@ -108,7 +108,7 @@ export function NextProjectFooter({ label, title, to }) {
             LinkedIn
             <Icon name="arrow-external.svg" />
           </a>
-          <a href={RESUME_URL} className="inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline">
+          <a href={RESUME_URL} download={RESUME_FILENAME} className="inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline">
             Download résumé
             <Icon name="arrow-down.svg" />
           </a>
