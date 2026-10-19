@@ -210,3 +210,18 @@ export const CASE_STUDY_CALMAN5 = {
   ],
   disclaimer: 'Some details have been modified or omitted to protect confidential information.',
 };
+
+// Only what's safe to show before unlocking. The case study itself is
+// encrypted in public/protected/next-gen-calman.json (see scripts/encrypt.mjs).
+export const NEXTGEN_GATE = {
+  slug: 'next-gen-calman',
+  title: 'Next-Gen Calman',
+  company: 'Portrait Displays, Inc.',
+  intro:
+    'This case study covers a product that hasn’t been announced yet, so I share it privately. The password is in the email I sent with my résumé.',
+  meta: [
+    { label: 'Role', value: 'Sole UX/UI Designer' },
+    { label: 'Timeline', value: '2024–present' },
+    { label: 'Platform', value: 'Desktop (Windows/Mac)' },
+  ],
+};

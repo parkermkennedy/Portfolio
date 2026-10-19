@@ -5,8 +5,21 @@ React + Vite + Tailwind CSS implementation of the Figma "Portfolio" design.
 **Pages**
 - `/` — Home (hero + grayscale ramp, selected work, about, résumé, footer). Responsive from 390px mobile to 1440px desktop.
 - `/work/calman-5-workflow-makeover` — Calman 5 Workflow Makeover case study.
+- `/work/next-gen-calman` — Next-Gen Calman case study, behind a password gate.
 
-The Next-Gen Calman case study (password protected) and its gate screen are intentionally **not built yet**. Its cards on the home page and the "next project" link are rendered but disabled.
+## Password-protected case study
+
+The repo is public and GitHub Pages has no server, so the Next-Gen Calman content is **encrypted**, not just hidden:
+
+- Plaintext lives in `private/` (gitignored, never commit it): `private/next-gen-calman.json` plus the images it references.
+- `npm run encrypt` turns it into AES-256-GCM ciphertext at `public/protected/next-gen-calman.json` (key derived from the password with PBKDF2-SHA256, 600k iterations). Commit that file; it's useless without the password.
+- In the browser, `src/lib/protected.js` decrypts it with whatever the visitor types. A wrong password fails decryption, so the password itself is stored nowhere. It's remembered for the tab in `sessionStorage`.
+
+```bash
+PASSWORD='the-password' npm run encrypt
+```
+
+Re-run it whenever you edit the content or change the password. Keep a backup of `private/`: it exists only on your machine.
 
 ## Setup
 

@@ -1,5 +1,3 @@
-import Icon from './Icon.jsx';
-
 /**
  * Home-page project entry: an image "plate" on top, then title / detail.
  * Mobile stacks everything; on desktop the title sits in a 520px left column
@@ -40,16 +38,3 @@ export default function ProjectCard({ plate, title, company, tagline, descriptio
   );
 }
 
-export function DisabledLink({ children }) {
-  // The Next-Gen Calman case study is intentionally not published yet.
-  return (
-    <span
-      className="text-link cursor-not-allowed"
-      aria-disabled="true"
-      title="This case study isn’t available yet"
-    >
-      {children}
-      <Icon name="arrow-right.svg" />
-    </span>
-  );
-}

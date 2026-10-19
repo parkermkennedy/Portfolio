@@ -20,6 +20,8 @@ export default function Layout() {
   return (
     <>
       <ScrollManager />
+      {/* Pages can portal a full-width banner above the nav (e.g. the NDA notice). */}
+      <div id="page-banner" />
       <Nav />
       <main>
         <Outlet />

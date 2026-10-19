@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import GrayscaleRamp from '../components/GrayscaleRamp.jsx';
-import ProjectCard, { DisabledLink } from '../components/ProjectCard.jsx';
+import ProjectCard from '../components/ProjectCard.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
 import Icon from '../components/Icon.jsx';
 import { JOBS, SKILL_COLUMNS } from '../data.js';
@@ -115,7 +115,12 @@ function SelectedWork() {
           { label: 'Timeline', value: '2024–present' },
           { label: 'Platform', value: 'Desktop (Windows/Mac)', desktopOnly: true },
         ]}
-        link={<DisabledLink>Enter password</DisabledLink>}
+        link={
+          <Link to="/work/next-gen-calman" className="text-link">
+            Enter password
+            <Icon name="arrow-right.svg" />
+          </Link>
+        }
       />
 
       <ProjectCard
