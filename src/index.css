@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+}
+
+@layer components {
+  /* Small uppercase label used for meta fields and column headings */
+  .label {
+    @apply font-sans text-[12px] font-medium uppercase tracking-[0.96px] text-muted;
+  }
+  /* Underlined text link used throughout (Enter password, All work, etc.) */
+  .text-link {
+    @apply inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline;
+  }
+  /* Responsive horizontal padding that matches the 120px desktop gutter */
+  .gutter {
+    @apply px-5 lg:px-[120px];
+  }
+}
