@@ -8,7 +8,8 @@
     "build": "vite build && node scripts/postbuild.mjs",
     "preview": "vite preview",
     "assets": "bash scripts/fetch-assets.sh",
-    "encrypt": "node scripts/encrypt.mjs"
+    "encrypt": "node scripts/encrypt.mjs",
+    "tokens": "node scripts/build-tokens.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

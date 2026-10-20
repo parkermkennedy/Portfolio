@@ -1,24 +1,28 @@
+const token = (name) => `rgb(var(--${name}-rgb) / <alpha-value>)`;
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      // Colors come from the design-system tokens in src/styles/tokens.css.
+      // The *-rgb channels keep Tailwind opacity modifiers working (e.g. bg-ink/90).
       colors: {
-        paper: '#f5f3ee',
-        sand: '#ece9e2',
-        ink: '#151515',
-        muted: '#54514b',
-        rule: '#d8d4cb',
-        accent: '#d51b36',
-        plate: '#1c1c1b',
-        'plate-label': '#bdbab5',
-        'dark-rule': '#40403d',
-        'dark-muted': '#b8b5ad',
+        paper: token('background-primary'),
+        sand: token('background-secondary'),
+        ink: token('text-primary'),
+        muted: token('text-secondary'),
+        rule: token('border-default'),
+        accent: token('accent-default'),
+        plate: token('surface-plate'),
+        'plate-label': token('text-inverse-secondary'),
+        'dark-rule': token('border-inverse'),
+        'dark-muted': token('text-inverse-secondary'),
       },
       fontFamily: {
-        serif: ['Newsreader', 'Georgia', 'serif'],
-        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        serif: 'var(--font-family-serif)',
+        sans: 'var(--font-family-sans)',
+        mono: 'var(--font-family-mono)',
         kr: ['"Noto Sans KR"', 'sans-serif'],
       },
     },

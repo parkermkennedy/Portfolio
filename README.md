@@ -7,6 +7,10 @@ React + Vite + Tailwind CSS implementation of the Figma "Portfolio" design.
 - `/work/calman-5-workflow-makeover` — Calman 5 Workflow Makeover case study.
 - `/work/next-gen-calman` — Next-Gen Calman case study, behind a password gate.
 
+## Design tokens
+
+Colors, type, spacing and shadows come from the Personal Design System in Figma. The tokens live in `tokens/`, and `npm run tokens` generates `src/styles/tokens.css` from them. See [`tokens/README.md`](tokens/README.md).
+
 ## Password-protected case study
 
 The repo is public and GitHub Pages has no server, so the Next-Gen Calman content is **encrypted**, not just hidden:
