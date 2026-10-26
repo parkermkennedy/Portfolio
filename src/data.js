@@ -230,6 +230,235 @@ export const CASE_STUDY_CALMAN5 = {
   disclaimer: 'Some details have been modified or omitted to protect confidential information.',
 };
 
+export const CASE_STUDY_PORTFOLIO = {
+  title: 'Rebuilding my portfolio to keep up with my work',
+  company: 'Personal project',
+  meta: [
+    { label: 'Role', value: 'Designer & front-end developer' },
+    { label: 'Timeline', value: '1 week' },
+    { label: 'Tools', value: 'Figma, React, AI' },
+    { label: 'Platform', value: 'Web (GitHub Pages)' },
+  ],
+  tldr: [
+    {
+      label: 'Problem',
+      text: 'My first portfolio, built in Figma Sites, was static. Updating one section took several days of placing buttons, linking them, and re-entering content by hand.',
+    },
+    {
+      label: 'What I did',
+      text: 'Rebuilt it as a coded site driven by my own Figma design system, with AI assistance, so the code and the Figma files can be updated together, by hand or with AI.',
+    },
+    {
+      label: 'Result',
+      text: 'A batch of changes now takes a few hours instead of days per section, and the unreleased project is now shared behind a password.',
+    },
+  ],
+  summary:
+    'A rebuild of the site you’re reading. I kept its content and structure, gave it a stronger visual identity, and moved it from a static page builder to a coded site built on a design system, so it can keep up with my work.',
+  sections: [
+    {
+      title: 'Background',
+      blocks: [
+        {
+          type: 'p',
+          text: 'The first version of this site was built and published with Figma Sites: a hero, two projects, an about section, and my résumé. It did the job, but every change was manual. I placed buttons, linked them, and worked out how to attach my résumé, one piece at a time.',
+        },
+        {
+          type: 'p',
+          text: 'My unreleased project was on the public site too, with some details redacted, but most of it was visible to anyone.',
+        },
+      ],
+    },
+    {
+      title: 'Problem statement',
+      blocks: [
+        {
+          type: 'pull',
+          text: 'My portfolio couldn’t keep up with my work. Updating one section took several days, so it fell behind.',
+        },
+        {
+          type: 'p',
+          text: 'The site was static: content, layout, and links all had to be changed by hand, and there was no safe way to share work that isn’t public yet.',
+        },
+      ],
+    },
+    {
+      title: 'Goals',
+      blocks: [
+        {
+          type: 'pair',
+          items: [
+            {
+              heading: 'Easy to update',
+              text: 'Make changes in hours instead of days, in both the code and the Figma files, either by hand or with AI.',
+            },
+            {
+              heading: 'Share unreleased work responsibly',
+              text: 'Show the full unreleased project only to people with the password, and give everyone else a public preview.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Visual direction',
+      blocks: [
+        {
+          type: 'p',
+          text: 'The look grew out of paper and brush strokes. The heart of the original site, its content and the order of its sections, stayed the same.',
+        },
+        {
+          type: 'list',
+          items: [
+            'A paper-toned background instead of plain white',
+            'A red seal stamp of my Korean name as the site’s mark',
+            'Serif type for headings, paired with a clean sans-serif for reading',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Design strategy',
+      blocks: [
+        {
+          type: 'list',
+          items: [
+            'One source of truth: colors, type, and spacing live in my Figma design system, and the code reads from it',
+            'Content as data, so updating text doesn’t mean touching the layout',
+            'Keep the Figma mockups and the code in sync, so either can be the starting point',
+            'Use AI to speed up building, while I make the design decisions',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Updating, before vs. after',
+      blocks: [
+        {
+          type: 'flow',
+          columns: [
+            {
+              heading: 'Before: Figma Sites',
+              summary: 'Several days to update one section.',
+              items: [
+                {
+                  kind: 'repeat',
+                  label: 'Repeat for every section',
+                  note: 'Hero, projects, about, résumé',
+                  steps: [
+                    'Edit the layout by hand',
+                    'Re-enter the content',
+                    'Place and link each button',
+                    'Work out how to attach files, like my résumé',
+                    'Publish from Figma Sites',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: 'After: coded site + design system',
+              summary: 'A few hours for a whole batch of changes.',
+              items: [
+                'Make the changes, by hand or with AI',
+                'Update the Figma mockups to match',
+                'Review in the browser',
+                'Push to GitHub',
+                {
+                  kind: 'auto',
+                  label: 'Automatic',
+                  note: 'GitHub builds and publishes the site on every push.',
+                  steps: ['Build', 'Publish'],
+                },
+              ],
+            },
+          ],
+          caption: 'Updating the site, from my side.',
+        },
+      ],
+    },
+    {
+      title: 'Solution',
+      blocks: [
+        { type: 'h', text: 'A design system that feeds the code' },
+        {
+          type: 'p',
+          text: 'Colors, type, spacing, and shadows live as variables and text styles in my Figma design system. One command exports them into the site’s styles, so a change in Figma reaches the site without retyping a value. Dark mode is already built into the tokens, ready to switch on.',
+        },
+        { type: 'h', text: 'Password protection without a server' },
+        {
+          type: 'p',
+          text: 'The site is hosted on GitHub Pages, which has no server to check a password. So the unreleased case study is encrypted, and it only decrypts with the right password. Everyone else sees a public preview and a Request access button that emails me.',
+        },
+        { type: 'h', text: 'Design and code that stay in sync' },
+        {
+          type: 'p',
+          text: 'Changes go into both the code and the Figma mockups, so the mockups always reflect the live site and I can start a change from either one.',
+        },
+      ],
+    },
+    {
+      title: 'Working with AI',
+      blocks: [
+        {
+          type: 'p',
+          text: 'I made the decisions: the visual direction, the structure, and what to build, like putting the unreleased project behind a password and leading that page with a public summary. AI helped me:',
+        },
+        {
+          type: 'list',
+          items: [
+            'Write the code for new features, such as the password-protected preview, Request access, and the process flowcharts',
+            'Suggest clean-up ideas, some of which I adopted, like the TL;DR summaries',
+            'Draft copy that I edited and approved',
+            'Fine-tune small visual details and structure content',
+            'Keep the Figma mockups in sync with the code',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Tradeoffs',
+      blocks: [
+        {
+          type: 'pair',
+          items: [
+            {
+              heading: 'Setup vs. speed',
+              text: 'A coded site takes more setup than a page builder. Once the system exists, every change after that is faster and more consistent.',
+            },
+            {
+              heading: 'Encryption vs. a real login',
+              text: 'Without a server there are no accounts: one shared password unlocks the case study. It’s simple for visitors, and I send the password on request instead of managing users.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Outcomes & impact',
+      blocks: [
+        {
+          type: 'list',
+          items: [
+            'Updates that took several days per section now take a few hours, even for a batch of changes across the code and Figma.',
+            'The unreleased project is now behind a password, with a public preview and a way to request access.',
+            'The Figma mockups match the live site, so either can be the starting point for the next change.',
+            'This case study was added with the same workflow.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Key takeaway',
+      blocks: [
+        {
+          type: 'pull',
+          text: 'A portfolio is a product too. Making it easy to change matters more than getting it perfect the first time.',
+        },
+      ],
+    },
+  ],
+};
+
 // Only what's safe to show before unlocking. The case study itself is
 // encrypted in public/protected/next-gen-calman.json (see scripts/encrypt.mjs).
 export const NEXTGEN_GATE = {

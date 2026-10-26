@@ -37,28 +37,21 @@ function Hero() {
   );
 }
 
-function Calman5Plate() {
+// Before / After plate for a project card. On mobile only the After shot shows.
+function BeforeAfterPlate({ before, after, imgClassName = '' }) {
   return (
     <div className="flex w-full items-start justify-center gap-6 overflow-clip rounded-[4px] bg-plate px-5 py-6 lg:p-16">
       <figure className="hidden min-w-px flex-1 flex-col gap-4 lg:flex">
         <figcaption className="font-sans text-[13px] font-medium uppercase tracking-[0.08em] text-plate-label">
           Before
         </figcaption>
-        <img
-          src={asset('c5-before.png')}
-          alt="Calman 5 workflow before the makeover"
-          className="h-[257px] w-full object-cover"
-        />
+        <img src={before.src} alt={before.alt} className={`h-[257px] w-full object-cover ${imgClassName}`} />
       </figure>
       <figure className="flex min-w-px flex-1 flex-col gap-4">
         <figcaption className="hidden font-sans text-[13px] font-medium uppercase tracking-[0.08em] text-plate-label lg:block">
           After
         </figcaption>
-        <img
-          src={asset('c5-after.png')}
-          alt="Calman 5 workflow after the makeover"
-          className="h-[153px] w-full object-cover lg:h-[257px]"
-        />
+        <img src={after.src} alt={after.alt} className={`h-[153px] w-full object-cover lg:h-[257px] ${imgClassName}`} />
       </figure>
     </div>
   );
@@ -72,7 +65,7 @@ function SelectedWork() {
     >
       <div className="flex items-baseline justify-between">
         <h2 className={h2}>Selected work</h2>
-        <p className="hidden font-sans text-[16px] text-muted lg:block">Two projects · Portrait Displays</p>
+        <p className="hidden font-sans text-[16px] text-muted lg:block">Three projects</p>
       </div>
 
       <ProjectCard
@@ -97,7 +90,12 @@ function SelectedWork() {
 
       <ProjectCard
         to="/work/calman-5-workflow-makeover"
-        plate={<Calman5Plate />}
+        plate={
+          <BeforeAfterPlate
+            before={{ src: asset('c5-before.png'), alt: 'Calman 5 workflow before the makeover' }}
+            after={{ src: asset('c5-after.png'), alt: 'Calman 5 workflow after the makeover' }}
+          />
+        }
         title="Calman 5 Workflow Makeover"
         company="Portrait Displays, Inc."
         tagline="New workflows now take minutes to build, not days."
@@ -109,6 +107,32 @@ function SelectedWork() {
         ]}
         link={
           <Link to="/work/calman-5-workflow-makeover" className="text-link">
+            View case study
+            <Icon name="arrow-right.svg" />
+          </Link>
+        }
+      />
+
+      <ProjectCard
+        to="/work/portfolio-rebuild"
+        plate={
+          <BeforeAfterPlate
+            before={{ src: asset('portfolio-before.png'), alt: 'The original portfolio home page, built in Figma Sites' }}
+            after={{ src: asset('portfolio-after.png'), alt: 'The rebuilt portfolio home page' }}
+            imgClassName="object-top"
+          />
+        }
+        title="Rebuilding my portfolio to keep up with my work"
+        company="Personal project"
+        tagline="Updates that took days now take hours."
+        description="A rebuild of this site, from a static page builder to a coded site driven by my own design system, so the code and the Figma files stay in sync."
+        meta={[
+          { label: 'Role', value: 'Designer & front-end developer' },
+          { label: 'Timeline', value: '1 week' },
+          { label: 'Tools', value: 'Figma, React, AI', desktopOnly: true },
+        ]}
+        link={
+          <Link to="/work/portfolio-rebuild" className="text-link">
             View case study
             <Icon name="arrow-right.svg" />
           </Link>

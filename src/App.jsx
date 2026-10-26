@@ -3,6 +3,7 @@ import Layout from './components/Layout.jsx';
 import Home from './pages/Home.jsx';
 import CaseStudyCalman5 from './pages/CaseStudyCalman5.jsx';
 import CaseStudyNextGen from './pages/CaseStudyNextGen.jsx';
+import CaseStudyPortfolio from './pages/CaseStudyPortfolio.jsx';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="work/next-gen-calman" element={<CaseStudyNextGen />} />
         <Route path="work/calman-5-workflow-makeover" element={<CaseStudyCalman5 />} />
+        <Route path="work/portfolio-rebuild" element={<CaseStudyPortfolio />} />
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>
