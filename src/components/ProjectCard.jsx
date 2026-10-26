@@ -1,17 +1,25 @@
+import { Link } from 'react-router-dom';
+
 /**
  * Home-page project entry: an image "plate" on top, then title / detail.
  * Mobile stacks everything; on desktop the title sits in a 520px left column
  * and the tagline, description, meta and link sit in the right column.
+ * The plate and title also link to `to`.
  */
-export default function ProjectCard({ plate, title, company, tagline, description, meta, link }) {
+export default function ProjectCard({ to, plate, title, company, tagline, description, meta, link }) {
   return (
     <article className="flex w-full flex-col gap-5 lg:gap-12">
-      {plate}
+      {/* Decorative duplicate of the title link, so it's hidden from screen readers and tab order. */}
+      <Link to={to} tabIndex={-1} aria-hidden="true" className="block transition-opacity hover:opacity-90">
+        {plate}
+      </Link>
 
       <div className="flex flex-col gap-5 lg:grid lg:grid-cols-[520px_1fr] lg:gap-x-24 lg:gap-y-8">
         <div className="flex flex-col gap-3 lg:col-start-1 lg:row-start-1">
           <h3 className="font-serif text-[32px] font-normal leading-[1.1] tracking-[-0.01em] lg:text-[48px] lg:leading-[1.05] lg:tracking-[-0.015em]">
-            {title}
+            <Link to={to} className="hover:underline">
+              {title}
+            </Link>
           </h3>
           <p className="hidden font-sans text-[16px] text-muted lg:block">{company}</p>
         </div>

@@ -76,6 +76,20 @@ export const CASE_STUDY_CALMAN5 = {
     { label: 'Team', value: 'Solo project' },
     { label: 'Platform', value: 'Calman 5 software' },
   ],
+  tldr: [
+    {
+      label: 'Problem',
+      text: 'Years of one-off additions left Calman 5’s workflows inconsistent, so users re-learned the process for every device they calibrated.',
+    },
+    {
+      label: 'What I did',
+      text: 'Designed one reusable workflow template with a central configuration page, working within Calman 5’s fixed components.',
+    },
+    {
+      label: 'Result',
+      text: '30+ workflows built from the template, new ones in minutes instead of days, and more useful diagnostic data for Support and R&D.',
+    },
+  ],
   summary:
     'A facelift for the shipping Calman 5 products. The goal: consistency across products, a higher success rate for people calibrating with Calman 5, and better usability.',
   sections: [
@@ -223,10 +237,33 @@ export const NEXTGEN_GATE = {
   title: 'Next-Gen Calman',
   company: 'Portrait Displays, Inc.',
   intro:
-    'This case study covers a product that hasn’t been announced yet, so I share it privately. The password is in the email I sent with my résumé.',
+    'The product hasn’t been announced yet, so the full case study, with the process, usability findings, and outcomes, is password protected. If you don’t have the password, request access and I’ll send it to you.',
   meta: [
     { label: 'Role', value: 'Sole UX/UI Designer' },
     { label: 'Timeline', value: '2024–present' },
     { label: 'Platform', value: 'Desktop (Windows/Mac)' },
   ],
+  // Public preview: nothing here goes beyond what the home page already says.
+  teaser:
+    'A guided desktop calibration app for home users. As the sole UX/UI designer, I took a long, expert-only process and turned it into a single automated flow, then tested it with both expert calibrators and first-time users.',
+  contents: [
+    'Background, goals, and who it’s for',
+    'The problem with the old workflow',
+    'Design strategy: the old process vs. the new guided flow',
+    'Interaction and visual design decisions',
+    'Usability testing: what we found and what we’re changing',
+    'Status and success metrics',
+  ],
 };
+
+// Opens the visitor's email app with an access request addressed to me.
+export const REQUEST_ACCESS_SUBJECT = 'Access request: Next-Gen Calman case study';
+export const REQUEST_ACCESS_BODY = `Hi Parker,
+
+I'd like access to the Next-Gen Calman case study on your portfolio.
+
+Name:
+Company:
+Role:
+
+Thanks!`;

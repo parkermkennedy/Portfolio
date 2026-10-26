@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import GrayscaleRamp from '../components/GrayscaleRamp.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
+import NextGenPlate from '../components/NextGenPlate.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
 import Icon from '../components/Icon.jsx';
 import { JOBS, SKILL_COLUMNS } from '../data.js';
@@ -33,36 +34,6 @@ function Hero() {
 
       <GrayscaleRamp />
     </section>
-  );
-}
-
-function NextGenPlate() {
-  return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-clip rounded-[4px] bg-plate px-5 py-6 lg:p-16">
-      {/* Mobile: blurred, dimmed screenshot */}
-      <img
-        src={asset('nextgen-mobile.png')}
-        alt=""
-        className="h-[235px] w-full object-cover opacity-60 blur-[10px] lg:hidden"
-      />
-      {/* Desktop: blurred screenshot cropped to the plate */}
-      <div className="relative hidden aspect-[1012/720] w-full max-w-[1012px] overflow-hidden blur-[2px] lg:block">
-        <img
-          src={asset('nextgen-desktop.png')}
-          alt=""
-          className="pointer-events-none absolute left-[-8.91%] top-[-9.54%] h-[147.57%] w-[147.64%] max-w-none"
-        />
-      </div>
-
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-[10px] rounded-[2px] bg-ink/90 px-[14px] py-[10px] text-paper lg:gap-3 lg:px-6 lg:py-4">
-        <Icon name="lock.svg" size={14} inset="-4.69% -5.36%" className="lg:hidden" />
-        <Icon name="lock.svg" size={18} inset="-3.75% -4.17%" className="hidden lg:inline-block" />
-        <span className="whitespace-nowrap font-sans text-[13px] font-medium lg:text-[16px]">
-          <span className="lg:hidden">Password protected</span>
-          <span className="hidden lg:inline">Unreleased product · password protected</span>
-        </span>
-      </div>
-    </div>
   );
 }
 
@@ -105,6 +76,7 @@ function SelectedWork() {
       </div>
 
       <ProjectCard
+        to="/work/next-gen-calman"
         plate={<NextGenPlate />}
         title="Next-Gen Calman"
         company="Portrait Displays, Inc."
@@ -117,13 +89,14 @@ function SelectedWork() {
         ]}
         link={
           <Link to="/work/next-gen-calman" className="text-link">
-            Enter password
+            Preview case study
             <Icon name="arrow-right.svg" />
           </Link>
         }
       />
 
       <ProjectCard
+        to="/work/calman-5-workflow-makeover"
         plate={<Calman5Plate />}
         title="Calman 5 Workflow Makeover"
         company="Portrait Displays, Inc."
@@ -176,8 +149,6 @@ function About() {
           iterative mockups through front-end handoff, and I maintain our Material Design–based
           design kit. I work where design meets engineering, for the studios, calibrators, and
           display manufacturers who need color exactly right.
-        </p>
-        <p className="font-sans text-[17px] leading-[1.55] text-muted lg:text-[19px]">
         </p>
 
         <dl className="flex gap-8 border-t border-rule pt-5 lg:gap-16 lg:pt-7">

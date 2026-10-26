@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
-import { CaseStudySection, NextProjectFooter } from '../components/CaseStudy.jsx';
-import { NEXTGEN_GATE as gate } from '../data.js';
+import { CaseStudySection, NextProjectFooter, TlDr } from '../components/CaseStudy.jsx';
+import NextGenPlate from '../components/NextGenPlate.jsx';
+import { NEXTGEN_GATE as gate, REQUEST_ACCESS_SUBJECT, REQUEST_ACCESS_BODY } from '../data.js';
 import { EMAIL } from '../lib/assets.js';
 import {
   decryptCaseStudy,
@@ -12,6 +13,10 @@ import {
   rememberPassword,
   WrongPasswordError,
 } from '../lib/protected.js';
+
+const requestAccessHref = `mailto:${EMAIL}?subject=${encodeURIComponent(
+  REQUEST_ACCESS_SUBJECT
+)}&body=${encodeURIComponent(REQUEST_ACCESS_BODY)}`;
 
 function Gate({ onUnlock }) {
   const [password, setPassword] = useState('');
@@ -39,86 +44,143 @@ function Gate({ onUnlock }) {
   const wrong = status === 'wrong';
 
   return (
-    <section className="gutter flex flex-col gap-12 pb-16 pt-12 lg:flex-row lg:items-start lg:gap-[120px] lg:py-[120px]">
-      <div className="flex min-w-px flex-1 flex-col gap-6 lg:gap-7">
-        <p className="flex items-center gap-[10px] font-sans text-[16px] font-medium text-accent">
+    <section className="gutter pb-16 lg:pb-[120px]">
+      <div className="flex flex-col gap-8 border-t border-rule pt-10 lg:flex-row lg:items-start lg:gap-24 lg:pt-14">
+        <div className="flex min-w-px flex-1 flex-col gap-4 lg:gap-6">
+          <h2 className="font-serif text-[28px] font-normal leading-[1.15] tracking-[-0.008em] lg:text-[34px]">
+            Read the full case study
+          </h2>
+          <p className="font-sans text-[17px] leading-[1.55] text-muted lg:text-[19px]">{gate.intro}</p>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex w-full flex-col gap-5 rounded-[4px] bg-sand p-6 lg:w-[480px] lg:shrink-0 lg:p-12"
+          noValidate
+        >
+          <h3 className="font-serif text-[28px] font-normal tracking-[-0.008em] lg:text-[32px]">Enter password</h3>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="case-study-password" className="font-sans text-[14px] font-medium">
+              Password
+            </label>
+            <input
+              id="case-study-password"
+              type="password"
+              autoComplete="current-password"
+              required
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                if (wrong) setStatus('idle');
+              }}
+              aria-invalid={wrong}
+              aria-describedby={wrong ? 'case-study-password-error' : undefined}
+              className={`h-14 w-full rounded-[2px] border bg-white px-4 font-sans text-[18px] text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-sand ${
+                wrong ? 'border-accent' : 'border-ink'
+              }`}
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={status === 'checking'}
+            className="inline-flex w-full items-center justify-center gap-3 rounded-[2px] bg-ink px-6 py-[18px] font-sans text-[16px] font-medium text-paper disabled:cursor-wait disabled:opacity-80"
+          >
+            {status === 'checking' ? 'Unlocking…' : 'View case study'}
+            <Icon name="arrow-right-light.svg" />
+          </button>
+
+          <div aria-live="polite">
+            {wrong && (
+              <p id="case-study-password-error" className="flex items-start gap-2 font-sans text-[14px] leading-[1.3] text-accent">
+                <span className="mt-[5px] size-[6px] shrink-0 bg-accent" aria-hidden="true" />
+                That password didn’t work. Check for typos, or request access below and I’ll resend it.
+              </p>
+            )}
+            {status === 'failed' && (
+              <p className="font-sans text-[14px] leading-[1.3] text-accent">{failure} Please try again.</p>
+            )}
+          </div>
+
+          <hr className="border-rule" />
+          <div className="flex flex-col gap-3">
+            <p className="font-sans text-[15px] leading-[1.55] text-muted">
+              Don’t have the password? Request access and I’ll send it to you.
+            </p>
+            <a
+              href={requestAccessHref}
+              className="inline-flex w-full items-center justify-center gap-3 rounded-[2px] border border-ink px-6 py-[14px] font-sans text-[16px] font-medium text-ink"
+            >
+              Request access
+              <Icon name="arrow-ext.svg" />
+            </a>
+            <p className="font-sans text-[13px] leading-[1.5] text-muted">
+              Opens your email app. Or write to{' '}
+              <a href={`mailto:${EMAIL}`} className="font-medium underline">
+                {EMAIL}
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+/** Public preview shown before unlocking: the summary, without anything confidential. */
+function Preview() {
+  return (
+    <>
+      <header className="gutter pb-12 pt-10 lg:pb-[72px] lg:pt-16">
+        <Link to="/#work" className="text-link">
+          <Icon name="arrow-left.svg" />
+          All work
+        </Link>
+
+        <p className="mt-12 flex items-center gap-[10px] font-sans text-[15px] font-medium text-accent lg:mt-[72px] lg:text-[16px]">
           <Icon name="lock-red.svg" size={18} height={20} inset="-3.75% -4.17%" />
-          Password protected
+          Preview · full case study is password protected
         </p>
-        <h1 className="font-serif text-[clamp(60px,7.2vw,104px)] font-light leading-[0.95] tracking-[-0.03em]">
+        <h1 className="mt-5 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[0.95] tracking-[-0.03em] lg:mt-6">
           {gate.title}
         </h1>
-        <p className="font-sans text-[18px] leading-[1.55] text-muted lg:text-[20px]">{gate.intro}</p>
-        <dl className="flex flex-wrap gap-x-12 gap-y-5 border-t border-ink pt-6">
+        <p className="mt-4 font-sans text-[18px] text-muted lg:mt-6 lg:text-[20px]">{gate.company}</p>
+
+        <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-ink pt-7 lg:mt-[72px] lg:grid-cols-4 lg:gap-12">
           {gate.meta.map((m) => (
-            <div key={m.label} className="flex flex-col gap-[6px]">
+            <div key={m.label} className="flex min-w-px flex-col gap-2">
               <dt className="label">{m.label}</dt>
-              <dd className="font-sans text-[16px] lg:text-[17px]">{m.value}</dd>
+              <dd className="font-sans text-[16px] leading-[1.4] lg:text-[18px]">{m.value}</dd>
             </div>
           ))}
         </dl>
+      </header>
+
+      <div className="gutter">
+        <NextGenPlate />
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="flex w-full flex-col gap-5 rounded-[4px] bg-sand p-6 lg:w-[480px] lg:shrink-0 lg:p-12"
-        noValidate
-      >
-        <h2 className="font-serif text-[28px] font-normal tracking-[-0.008em] lg:text-[32px]">Enter password</h2>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="case-study-password" className="font-sans text-[14px] font-medium">
-            Password
-          </label>
-          <input
-            id="case-study-password"
-            type="password"
-            autoComplete="current-password"
-            autoFocus
-            required
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              if (wrong) setStatus('idle');
-            }}
-            aria-invalid={wrong}
-            aria-describedby={wrong ? 'case-study-password-error' : undefined}
-            className={`h-14 w-full rounded-[2px] border bg-white px-4 font-sans text-[18px] text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-sand ${
-              wrong ? 'border-accent' : 'border-ink'
-            }`}
-          />
+      <section className="gutter flex flex-col gap-6 pb-14 pt-16 lg:flex-row lg:gap-24 lg:pb-24 lg:pt-[120px]">
+        <h2 className="label lg:w-[264px] lg:shrink-0">At a glance</h2>
+        <div className="flex min-w-px flex-1 flex-col gap-10">
+          <p className="font-serif text-[26px] font-normal leading-[1.3] tracking-[-0.008em] lg:text-[36px]">
+            {gate.teaser}
+          </p>
+          <div className="flex flex-col gap-5 border-t border-ink pt-6">
+            <h3 className="label">What’s inside</h3>
+            <ul className="flex flex-col gap-3">
+              {gate.contents.map((item) => (
+                <li key={item} className="flex items-start gap-4">
+                  <span className="flex pt-3" aria-hidden="true">
+                    <span className="size-[6px] shrink-0 bg-accent" />
+                  </span>
+                  <span className="min-w-px flex-1 font-sans text-[16px] leading-[1.6] lg:text-[18px]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <button
-          type="submit"
-          disabled={status === 'checking'}
-          className="inline-flex w-full items-center justify-center gap-3 rounded-[2px] bg-ink px-6 py-[18px] font-sans text-[16px] font-medium text-paper disabled:cursor-wait disabled:opacity-80"
-        >
-          {status === 'checking' ? 'Unlocking…' : 'View case study'}
-          <Icon name="arrow-right-light.svg" />
-        </button>
-
-        <div aria-live="polite">
-          {wrong && (
-            <p id="case-study-password-error" className="flex items-start gap-2 font-sans text-[14px] leading-[1.3] text-accent">
-              <span className="mt-[5px] size-[6px] shrink-0 bg-accent" aria-hidden="true" />
-              That password didn’t work. Check for typos, or email me and I’ll resend it.
-            </p>
-          )}
-          {status === 'failed' && (
-            <p className="font-sans text-[14px] leading-[1.3] text-accent">{failure} Please try again.</p>
-          )}
-        </div>
-
-        <hr className="border-rule" />
-        <p className="font-sans text-[15px] leading-[1.55] text-muted">
-          Can’t find the password?
-          <br />
-          Email{' '}
-          <a href={`mailto:${EMAIL}`} className="font-medium underline">
-            {EMAIL}
-          </a>
-        </p>
-      </form>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -163,6 +225,8 @@ function CaseStudy({ cs }) {
             </div>
           ))}
         </dl>
+
+        <TlDr items={cs.tldr} />
       </header>
 
       <div className="gutter">
@@ -220,5 +284,10 @@ export default function CaseStudyNextGen() {
 
   if (content) return <CaseStudy cs={content} />;
   if (restoring) return <div className="min-h-[60vh]" aria-busy="true" />;
-  return <Gate onUnlock={setContent} />;
+  return (
+    <>
+      <Preview />
+      <Gate onUnlock={setContent} />
+    </>
+  );
 }

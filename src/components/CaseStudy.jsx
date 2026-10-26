@@ -54,6 +54,8 @@ function Block({ block }) {
           ))}
         </div>
       );
+    case 'flow':
+      return <Flow block={block} />;
     case 'image':
       return (
         <img
@@ -65,6 +67,122 @@ function Block({ block }) {
     default:
       return null;
   }
+}
+
+function LoopIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="shrink-0">
+      <path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12.5 1.5v3h-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** One numbered step the user performs, joined to the next by a vertical line. */
+function FlowStep({ n, text, last }) {
+  return (
+    <li className="relative flex items-start gap-3 pb-3 last:pb-0">
+      {!last && <span className="absolute bottom-0 left-[11.5px] top-6 w-px bg-ink/30" aria-hidden="true" />}
+      <span className="relative flex size-6 shrink-0 items-center justify-center rounded-full border border-ink bg-paper font-mono text-[11px]">
+        {n}
+      </span>
+      <span className="min-w-px flex-1 pt-[2px] font-sans text-[15px] leading-[1.4]">{text}</span>
+    </li>
+  );
+}
+
+/**
+ * Two processes side by side (stacked on mobile). Each column's items are
+ * step strings or a group: `repeat` wraps numbered steps in a dashed loop,
+ * `auto` shows steps the app runs on its own as chips on a dark block.
+ */
+function Flow({ block }) {
+  return (
+    <figure className="flex flex-col gap-6">
+      <div className="flex flex-col gap-10 lg:flex-row lg:gap-10">
+        {block.columns.map((col) => {
+          let n = 0;
+          return (
+            <div key={col.heading} className="flex min-w-px flex-1 flex-col gap-5">
+              <div className="flex flex-col gap-1 border-t border-ink pt-5">
+                <h3 className="font-sans text-[18px] font-medium">{col.heading}</h3>
+                <p className="font-sans text-[15px] leading-[1.45] text-muted">{col.summary}</p>
+              </div>
+              <ol className="flex flex-col">
+                {col.items.map((item, i) => {
+                  const last = i === col.items.length - 1;
+                  if (typeof item === 'string') return <FlowStep key={item} n={++n} text={item} last={last} />;
+                  if (item.kind === 'repeat') {
+                    return (
+                      <li key={item.label} className="flex flex-col gap-4 rounded-[4px] border border-dashed border-accent p-4">
+                        <div className="flex flex-col gap-1">
+                          <p className="flex items-center gap-2 font-sans text-[14px] font-medium text-accent">
+                            <LoopIcon />
+                            {item.label}
+                          </p>
+                          <p className="font-sans text-[13px] leading-[1.4] text-muted">{item.note}</p>
+                        </div>
+                        <ol className="flex flex-col">
+                          {item.steps.map((step, j) => (
+                            <FlowStep key={step} n={++n} text={step} last={j === item.steps.length - 1} />
+                          ))}
+                        </ol>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={item.label} className="relative pt-3">
+                      <span className="absolute left-[11.5px] top-0 h-3 w-px bg-ink/30" aria-hidden="true" />
+                      <div className="flex flex-col gap-3 rounded-[4px] bg-ink p-4 text-paper">
+                        <div className="flex flex-col gap-1">
+                          <p className="font-sans text-[14px] font-medium">{item.label}</p>
+                          <p className="font-sans text-[13px] leading-[1.4] text-dark-muted">{item.note}</p>
+                        </div>
+                        <ul className="flex flex-wrap gap-2">
+                          {item.steps.map((step) => (
+                            <li
+                              key={step}
+                              className="rounded-[2px] border border-dark-rule px-2 py-1 font-sans text-[12px] leading-[1.3] text-dark-muted"
+                            >
+                              {step}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          );
+        })}
+      </div>
+      {block.caption && (
+        <figcaption className="font-sans text-[14px] leading-[1.5] text-muted">{block.caption}</figcaption>
+      )}
+    </figure>
+  );
+}
+
+/** Three-line skim of the case study (Problem / What I did / Result), shown in the header. */
+export function TlDr({ items }) {
+  if (!items?.length) return null;
+  return (
+    <section
+      aria-labelledby="tldr-heading"
+      className="mt-10 flex flex-col gap-5 rounded-[4px] bg-sand p-6 lg:mt-14 lg:gap-6 lg:p-10"
+    >
+      <h2 id="tldr-heading" className="label">TL;DR</h2>
+      <dl className="grid gap-6 lg:grid-cols-3 lg:gap-12">
+        {items.map((item) => (
+          <div key={item.label} className="flex min-w-px flex-col gap-2">
+            <dt className="font-sans text-[14px] font-medium lg:text-[15px]">{item.label}</dt>
+            <dd className="font-sans text-[16px] leading-[1.55] lg:text-[17px]">{item.text}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
 }
 
 export function CaseStudySection({ section }) {

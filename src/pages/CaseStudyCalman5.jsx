@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
-import { CaseStudySection, NextProjectFooter } from '../components/CaseStudy.jsx';
+import { CaseStudySection, NextProjectFooter, TlDr } from '../components/CaseStudy.jsx';
 import { CASE_STUDY_CALMAN5 as cs } from '../data.js';
 import { asset } from '../lib/assets.js';
 
@@ -26,6 +26,8 @@ export default function CaseStudyCalman5() {
             </div>
           ))}
         </dl>
+
+        <TlDr items={cs.tldr} />
       </header>
 
       <div className="gutter">
