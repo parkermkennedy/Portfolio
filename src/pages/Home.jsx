@@ -178,8 +178,6 @@ function About() {
           display manufacturers who need color exactly right.
         </p>
         <p className="font-sans text-[17px] leading-[1.55] text-muted lg:text-[19px]">
-          The red seal is my Korean name, <span lang="ko" className="font-kr">박광민</span>, written
-          in hanja.
         </p>
 
         <dl className="flex gap-8 border-t border-rule pt-5 lg:gap-16 lg:pt-7">
