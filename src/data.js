@@ -139,6 +139,10 @@ export const CASE_STUDY_CALMAN5 = {
       blocks: [
         { type: 'h', text: 'Target users' },
         { type: 'p', text: 'Professional calibrators, home enthusiasts, and production studios.' },
+        {
+          type: 'p',
+          text: 'Experienced professional calibrators needed control and accuracy, while novice users needed guidance and clarity. Both needed confidence in their calibration results.',
+        },
         { type: 'h', text: 'Feedback constraints' },
         {
           type: 'p',
