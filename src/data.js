@@ -483,6 +483,7 @@ export const NEXTGEN_GATE = {
     'Background, goals, and who it’s for',
     'The problem with the old workflow',
     'Design strategy: the old process vs. the new guided flow',
+    'Iterations: how the results screen evolved',
     'Interaction and visual design decisions',
     'Usability testing: what we found and what we’re changing',
     'Status and success metrics',

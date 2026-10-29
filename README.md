@@ -34,7 +34,7 @@ npm run dev
 ```
 
 **Assets:** the URLs in `scripts/fetch-assets.sh` are temporary Figma export links (about 7 days). If they have expired, export these from Figma and save into `public/assets/` with the same names:
-`seal.png`, `nextgen-desktop.png`, `nextgen-mobile.png`, `c5-before.png`, `c5-after.png`, `about-photo.png`, `about-photo-mobile.png`, `cs-before.png`, `cs-after.png`, and SVGs `arrow-ext`, `arrow-external`, `arrow-right`, `arrow-down`, `arrow-left`, `lock`, `menu-button`.
+`seal.png`, `nextgen-preview-blurred.jpg` (committed; blur is baked in, regenerate it from a sharp export rather than fetching), `c5-before.png`, `c5-after.png`, `about-photo.png`, `about-photo-mobile.png`, `cs-before.png`, `cs-after.png`, and SVGs `arrow-ext`, `arrow-external`, `arrow-right`, `arrow-down`, `arrow-left`, `lock`, `menu-button`.
 
 **Résumé:** add your PDF at `public/resume.pdf` (the "Download PDF" / "Download résumé" links point to `/resume.pdf`).
 

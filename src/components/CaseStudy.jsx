@@ -64,6 +64,8 @@ function Block({ block }) {
           className="h-auto w-full rounded-[4px] object-cover lg:h-[575px]"
         />
       );
+    case 'gallery':
+      return <Gallery block={block} />;
     default:
       return null;
   }
@@ -153,6 +155,34 @@ function Flow({ block }) {
                   );
                 })}
               </ol>
+            </div>
+          );
+        })}
+      </div>
+      {block.caption && (
+        <figcaption className="font-sans text-[14px] leading-[1.5] text-muted">{block.caption}</figcaption>
+      )}
+    </figure>
+  );
+}
+
+/**
+ * Uncropped screenshots with optional labels and notes, plus one shared caption.
+ * `columns: 2` puts them side by side on desktop; with an odd count the last
+ * one spans the full width (e.g. two earlier versions above the shipped one).
+ */
+function Gallery({ block }) {
+  const two = block.columns === 2;
+  return (
+    <figure className="flex flex-col gap-4">
+      <div className={`grid gap-6 ${two ? 'lg:grid-cols-2 lg:gap-x-5 lg:gap-y-8' : ''}`}>
+        {block.items.map((item, i) => {
+          const spanLast = two && block.items.length % 2 === 1 && i === block.items.length - 1;
+          return (
+            <div key={item.src} className={`flex min-w-px flex-col gap-3 ${spanLast ? 'lg:col-span-2' : ''}`}>
+              {item.label && <p className="label">{item.label}</p>}
+              <img src={item.src} alt={item.alt} loading="lazy" className="h-auto w-full rounded-[4px]" />
+              {item.note && <p className="font-sans text-[14px] leading-[1.5] text-muted">{item.note}</p>}
             </div>
           );
         })}

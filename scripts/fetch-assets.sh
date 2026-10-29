@@ -16,8 +16,6 @@ get() { # get <filename> <uuid.ext>
 
 # Images
 get seal.png               eecfb4ab-f089-4562-ba9d-6bb60206c702.png
-get nextgen-desktop.png    12daeb25-89b9-474b-a365-8ba2fd5c90a2.png
-get nextgen-mobile.png     54cc28cd-4080-4857-877b-e4951a2fcd86.png
 get c5-before.png          50841076-516e-4d84-9ff2-9f83e3f0dcd9.png
 get c5-after.png           2d8fc0d1-a75f-444a-81c6-5f3da7e7bd74.png
 get about-photo.png        4fc7e48c-811f-45c0-acd4-f765718e5215.png
