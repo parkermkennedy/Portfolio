@@ -2,7 +2,7 @@
   "source": {
     "file": "Personal Design System",
     "url": "https://www.figma.com/design/0IfgNuj1RZuWn8IELujhR8/Personal-Design-System",
-    "exported": "2026-10-20"
+    "exported": "2026-10-29"
   },
   "collections": {
     "primitive": {
@@ -710,6 +710,18 @@
             },
             "Dark": {
               "alias": "color/primary/500"
+            }
+          }
+        },
+        "text/error": {
+          "type": "COLOR",
+          "css": "var(--text-error)",
+          "values": {
+            "Light": {
+              "alias": "color/error/600"
+            },
+            "Dark": {
+              "alias": "color/error/600"
             }
           }
         },

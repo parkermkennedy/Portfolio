@@ -224,6 +224,7 @@ export function NextProjectFooter({ label, title, to }) {
             className="inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline"
           >
             LinkedIn
+            <span className="sr-only"> (opens in a new tab)</span>
             <Icon name="arrow-external.svg" />
           </a>
           <a href={RESUME_URL} download={RESUME_FILENAME} className="inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline">

@@ -10,6 +10,22 @@
   body {
     @apply bg-paper font-sans text-ink antialiased;
   }
+  /* Keyboard focus ring in the design system's focus color */
+  :focus-visible {
+    outline: 2px solid rgb(var(--focus-ring-rgb));
+    outline-offset: 3px;
+  }
+  /* Headings and sections focused by script (route changes, skip link) aren't controls: no ring */
+  [tabindex='-1']:focus {
+    outline: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer components {
@@ -24,5 +40,14 @@
   /* Responsive horizontal padding that matches the 120px desktop gutter */
   .gutter {
     @apply px-5 lg:px-[120px];
+  }
+  /* "Skip to content" link: off screen until it gets keyboard focus */
+  .skip-link {
+    @apply sr-only z-50 bg-ink font-sans text-[16px] font-medium text-paper;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed left-4 top-4;
+    /* not-sr-only resets padding, so set it after */
+    padding: 12px 16px;
   }
 }

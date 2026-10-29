@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import Icon from './Icon.jsx';
 import { CaseStudySection, NextProjectFooter, TlDr } from './CaseStudy.jsx';
+import { PageSlot } from './Layout.jsx';
+import useDocumentTitle from '../lib/useDocumentTitle.js';
 
 function Shot({ caption, src, alt, imgClassName }) {
   return (
@@ -19,6 +21,7 @@ function Shot({ caption, src, alt, imgClassName }) {
  * `before` and `after` are { src, alt }; `next` is { label, title, to }.
  */
 export default function CaseStudyPage({ cs, before, after, imgClassName = 'lg:h-[253px]', next }) {
+  useDocumentTitle(cs.title);
   return (
     <>
       <header className="gutter pb-12 pt-10 lg:pb-[72px] lg:pt-16">
@@ -70,7 +73,9 @@ export default function CaseStudyPage({ cs, before, after, imgClassName = 'lg:h-
         )}
       </div>
 
-      <NextProjectFooter {...next} />
+      <PageSlot name="footer">
+        <NextProjectFooter {...next} />
+      </PageSlot>
     </>
   );
 }
