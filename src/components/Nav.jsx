@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from './Icon.jsx';
 import { asset, EMAIL } from '../lib/assets.js';
@@ -14,9 +14,22 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   // On case-study pages the "Work" link is highlighted in the brand red.
   const workActive = pathname.startsWith('/work');
+  const menuButton = useRef(null);
 
-  const linkClass = (label) =>
-    `font-sans text-[16px] ${label === 'Work' && workActive ? 'text-accent' : 'text-ink'}`;
+  // Escape closes the mobile menu and returns focus to its button.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      menuButton.current?.focus();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
+  const isCurrent = (label) => label === 'Work' && workActive;
+  const linkClass = (label) => `font-sans text-[16px] ${isCurrent(label) ? 'text-accent' : 'text-ink'}`;
 
   return (
     <header className="relative border-b border-rule">
@@ -42,7 +55,12 @@ export default function Nav() {
         {/* Desktop links */}
         <div className="hidden items-center gap-10 lg:flex">
           {LINKS.map((l) => (
-            <Link key={l.label} to={l.to} className={linkClass(l.label)}>
+            <Link
+              key={l.label}
+              to={l.to}
+              className={linkClass(l.label)}
+              aria-current={isCurrent(l.label) ? 'true' : undefined}
+            >
               {l.label}
             </Link>
           ))}
@@ -57,6 +75,7 @@ export default function Nav() {
 
         {/* Mobile menu button */}
         <button
+          ref={menuButton}
           type="button"
           className="relative size-11 lg:hidden"
           aria-expanded={open}
@@ -79,6 +98,7 @@ export default function Nav() {
                 <Link
                   to={l.to}
                   className={`block py-4 ${linkClass(l.label)}`}
+                  aria-current={isCurrent(l.label) ? 'true' : undefined}
                   onClick={() => setOpen(false)}
                 >
                   {l.label}

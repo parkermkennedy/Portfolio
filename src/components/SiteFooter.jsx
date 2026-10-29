@@ -38,6 +38,7 @@ export default function SiteFooter() {
               className={`${linkBase} font-sans text-[16px] font-medium underline`}
             >
               LinkedIn
+              <span className="sr-only"> (opens in a new tab)</span>
               <Icon name="arrow-external.svg" />
             </a>
             {/* On mobile the résumé link lives with the contact links */}

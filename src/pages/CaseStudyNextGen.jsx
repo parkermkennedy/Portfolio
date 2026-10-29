@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import { CaseStudySection, NextProjectFooter, TlDr } from '../components/CaseStudy.jsx';
 import NextGenPlate from '../components/NextGenPlate.jsx';
+import { focusElement, PageSlot } from '../components/Layout.jsx';
 import { NEXTGEN_GATE as gate, REQUEST_ACCESS_SUBJECT, REQUEST_ACCESS_BODY } from '../data.js';
 import { EMAIL } from '../lib/assets.js';
+import useDocumentTitle from '../lib/useDocumentTitle.js';
 import {
   decryptCaseStudy,
   forgetPassword,
@@ -42,6 +43,9 @@ function Gate({ onUnlock }) {
   }
 
   const wrong = status === 'wrong';
+  const failed = status === 'failed';
+  // text-error, not the accent: the accent is too light for 14px text on the sand form.
+  const errorText = 'text-error';
 
   return (
     <section className="gutter pb-16 lg:pb-[120px]">
@@ -74,7 +78,7 @@ function Gate({ onUnlock }) {
                 if (wrong) setStatus('idle');
               }}
               aria-invalid={wrong}
-              aria-describedby={wrong ? 'case-study-password-error' : undefined}
+              aria-describedby={wrong || failed ? 'case-study-password-error' : undefined}
               className={`h-14 w-full rounded-[2px] border bg-white px-4 font-sans text-[18px] text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-sand ${
                 wrong ? 'border-accent' : 'border-ink'
               }`}
@@ -91,13 +95,15 @@ function Gate({ onUnlock }) {
 
           <div aria-live="polite">
             {wrong && (
-              <p id="case-study-password-error" className="flex items-start gap-2 font-sans text-[14px] leading-[1.3] text-accent">
+              <p id="case-study-password-error" className={`flex items-start gap-2 font-sans text-[14px] leading-[1.3] ${errorText}`}>
                 <span className="mt-[5px] size-[6px] shrink-0 bg-accent" aria-hidden="true" />
                 That password didn’t work. Check for typos, or request access below and I’ll resend it.
               </p>
             )}
-            {status === 'failed' && (
-              <p className="font-sans text-[14px] leading-[1.3] text-accent">{failure} Please try again.</p>
+            {failed && (
+              <p id="case-study-password-error" className={`font-sans text-[14px] leading-[1.3] ${errorText}`}>
+                {failure} Please try again.
+              </p>
             )}
           </div>
 
@@ -185,23 +191,31 @@ function Preview() {
 }
 
 function NdaBanner() {
-  // The slot lives in Layout, above the nav; wait for it to mount.
-  const [slot, setSlot] = useState(null);
-  useEffect(() => setSlot(document.getElementById('page-banner')), []);
-  if (!slot) return null;
-  return createPortal(
-    <div className="flex items-center justify-center gap-3 bg-ink px-5 py-[14px] text-paper">
-      <Icon name="lock.svg" size={14} height={16} inset="-4.69% -5.36%" className="shrink-0" />
-      <p className="font-sans text-[13px] leading-[1.4] lg:text-[14px]">
-        Confidential: this case study covers an unreleased product and is shared under NDA. Please
-        don’t share it or take screenshots.
-      </p>
-    </div>,
-    slot
+  return (
+    <PageSlot name="banner">
+      <aside
+        aria-label="Confidentiality notice"
+        className="flex items-center justify-center gap-3 bg-ink px-5 py-[14px] text-paper"
+      >
+        <Icon name="lock.svg" size={14} height={16} inset="-4.69% -5.36%" className="shrink-0" />
+        <p className="font-sans text-[13px] leading-[1.4] lg:text-[14px]">
+          Confidential: this case study covers an unreleased product and is shared under NDA. Please
+          don’t share it or take screenshots.
+        </p>
+      </aside>
+    </PageSlot>
   );
 }
 
-function CaseStudy({ cs }) {
+function CaseStudy({ cs, focusHeading }) {
+  const headingRef = useRef(null);
+  // After unlocking, the form the reader was in is gone: start them at the top.
+  useEffect(() => {
+    if (!focusHeading) return;
+    window.scrollTo(0, 0);
+    focusElement(headingRef.current);
+  }, [focusHeading]);
+
   return (
     <>
       <NdaBanner />
@@ -212,7 +226,10 @@ function CaseStudy({ cs }) {
           All work
         </Link>
 
-        <h1 className="mt-12 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[0.95] tracking-[-0.03em] lg:mt-[72px]">
+        <h1
+          ref={headingRef}
+          className="mt-12 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[0.95] tracking-[-0.03em] lg:mt-[72px]"
+        >
           {gate.title}
         </h1>
         <p className="mt-4 font-sans text-[18px] text-muted lg:mt-6 lg:text-[20px]">{gate.company}</p>
@@ -254,17 +271,21 @@ function CaseStudy({ cs }) {
         <p className="pt-8 font-sans text-[14px] leading-[1.5] text-muted">{cs.disclaimer}</p>
       </div>
 
-      <NextProjectFooter
-        label="Next project"
-        title="Calman 5 Workflow Makeover"
-        to="/work/calman-5-workflow-makeover"
-      />
+      <PageSlot name="footer">
+        <NextProjectFooter
+          label="Next project"
+          title="Calman 5 Workflow Makeover"
+          to="/work/calman-5-workflow-makeover"
+        />
+      </PageSlot>
     </>
   );
 }
 
 export default function CaseStudyNextGen() {
+  useDocumentTitle(gate.title);
   const [content, setContent] = useState(null);
+  const [justUnlocked, setJustUnlocked] = useState(false);
   // If this tab already unlocked it, decrypt again quietly instead of
   // flashing the gate.
   const [restoring, setRestoring] = useState(() => Boolean(recallPassword(gate.slug)));
@@ -282,12 +303,23 @@ export default function CaseStudyNextGen() {
     };
   }, []);
 
-  if (content) return <CaseStudy cs={content} />;
-  if (restoring) return <div className="min-h-[60vh]" aria-busy="true" />;
+  if (content) return <CaseStudy cs={content} focusHeading={justUnlocked} />;
+  if (restoring) {
+    return (
+      <div className="min-h-[60vh]" role="status" aria-busy="true">
+        <p className="sr-only">Loading case study…</p>
+      </div>
+    );
+  }
   return (
     <>
       <Preview />
-      <Gate onUnlock={setContent} />
+      <Gate
+        onUnlock={(c) => {
+          setContent(c);
+          setJustUnlocked(true);
+        }}
+      />
     </>
   );
 }

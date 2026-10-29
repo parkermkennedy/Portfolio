@@ -4,8 +4,10 @@ import ProjectCard from '../components/ProjectCard.jsx';
 import NextGenPlate from '../components/NextGenPlate.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
 import Icon from '../components/Icon.jsx';
+import { PageSlot } from '../components/Layout.jsx';
 import { JOBS, SKILL_COLUMNS } from '../data.js';
 import { asset, RESUME_URL, RESUME_FILENAME } from '../lib/assets.js';
+import useDocumentTitle from '../lib/useDocumentTitle.js';
 
 const h2 =
   'font-serif text-[40px] font-normal leading-[1.05] tracking-[-0.015em] lg:text-[64px] lg:leading-none lg:tracking-[-0.02em]';
@@ -82,7 +84,7 @@ function SelectedWork() {
         ]}
         link={
           <Link to="/work/next-gen-calman" className="text-link">
-            Preview case study
+            Preview case study<span className="sr-only">: Next-Gen Calman</span>
             <Icon name="arrow-right.svg" />
           </Link>
         }
@@ -92,8 +94,8 @@ function SelectedWork() {
         to="/work/calman-5-workflow-makeover"
         plate={
           <BeforeAfterPlate
-            before={{ src: asset('c5-before.png'), alt: 'Calman 5 workflow before the makeover' }}
-            after={{ src: asset('c5-after.png'), alt: 'Calman 5 workflow after the makeover' }}
+            before={{ src: asset('c5-before.png'), alt: 'The old Calman 5 Pre Calibration Capture page: a gamut chart, RGB balance, EOTF, luminance and two DeltaE charts, with one line of instructions and an empty notes panel' }}
+            after={{ src: asset('c5-after.png'), alt: 'The redesigned SDR Pre-Cal page: a Display Performance summary of average and max DeltaE for saturation sweeps, ColorChecker and grayscale, a prominent Measure button, and DeltaE 2000 and ITP charts for each test' }}
           />
         }
         title="Calman 5 Workflow Makeover"
@@ -107,7 +109,7 @@ function SelectedWork() {
         ]}
         link={
           <Link to="/work/calman-5-workflow-makeover" className="text-link">
-            View case study
+            View case study<span className="sr-only">: Calman 5 Workflow Makeover</span>
             <Icon name="arrow-right.svg" />
           </Link>
         }
@@ -117,8 +119,8 @@ function SelectedWork() {
         to="/work/portfolio-rebuild"
         plate={
           <BeforeAfterPlate
-            before={{ src: asset('portfolio-before.png'), alt: 'The original portfolio home page, built in Figma Sites' }}
-            after={{ src: asset('portfolio-after.png'), alt: 'The rebuilt portfolio home page' }}
+            before={{ src: asset('portfolio-before.png'), alt: 'The original portfolio home page: a centered “Hi, I’m Parker Kennedy” headline, a short intro and plain project cards in a generic sans-serif layout' }}
+            after={{ src: asset('portfolio-after.png'), alt: 'The rebuilt home page: a large serif headline, “Making expert tools feel effortless.”, on warm off-white, a short intro and a 21-step grayscale ramp' }}
             imgClassName="object-top"
           />
         }
@@ -133,7 +135,7 @@ function SelectedWork() {
         ]}
         link={
           <Link to="/work/portfolio-rebuild" className="text-link">
-            View case study
+            View case study<span className="sr-only">: Portfolio rebuild</span>
             <Icon name="arrow-right.svg" />
           </Link>
         }
@@ -259,13 +261,16 @@ function Resume() {
 }
 
 export default function Home() {
+  useDocumentTitle();
   return (
     <>
       <Hero />
       <SelectedWork />
       <About />
       <Resume />
-      <SiteFooter />
+      <PageSlot name="footer">
+        <SiteFooter />
+      </PageSlot>
     </>
   );
 }
