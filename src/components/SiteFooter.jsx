@@ -1,5 +1,6 @@
 import Icon from './Icon.jsx';
-import { asset, EMAIL, LINKEDIN_URL, RESUME_URL, RESUME_FILENAME } from '../lib/assets.js';
+import Seal from './Seal.jsx';
+import { EMAIL, LINKEDIN_URL, RESUME_URL, RESUME_FILENAME } from '../lib/assets.js';
 
 const linkBase = 'inline-flex items-center gap-[10px]';
 
@@ -45,10 +46,13 @@ export default function SiteFooter() {
             <ResumeLink className="lg:hidden" />
           </div>
         </div>
-        <img
-          src={asset('seal.png')}
-          alt="Red seal of Parker Kennedy’s Korean name"
-          className="order-first size-[88px] object-cover lg:order-last lg:size-[168px]"
+        <Seal
+          interactive
+          tone="light"
+          alt="Red seal reading 박광민, Park Kwang Min, Parker Kennedy’s Korean name"
+          className="order-first self-start lg:order-last lg:self-auto"
+          imgClassName="size-[88px] lg:size-[168px]"
+          tipClassName="bottom-full left-0 mb-3 lg:left-auto lg:right-0"
         />
       </div>
 

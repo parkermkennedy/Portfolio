@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from './Icon.jsx';
+import Seal from './Seal.jsx';
 import { asset, EMAIL } from '../lib/assets.js';
 
 const LINKS = [
@@ -42,11 +43,7 @@ export default function Nav() {
           className="flex items-center gap-3 lg:gap-[14px]"
           onClick={() => setOpen(false)}
         >
-          <img
-            src={asset('seal.png')}
-            alt=""
-            className="size-8 object-cover lg:size-9"
-          />
+          <Seal imgClassName="size-8 lg:size-9" tipClassName="left-0 top-full mt-2" />
           <span className="font-sans text-[16px] font-medium tracking-[-0.005em] lg:text-[17px]">
             Parker Kennedy
           </span>

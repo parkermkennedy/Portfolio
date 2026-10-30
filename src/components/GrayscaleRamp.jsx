@@ -38,10 +38,19 @@ export default function GrayscaleRamp() {
         <span>100</span>
       </div>
 
-      <figcaption className="font-sans text-[13px] leading-[1.5] text-muted lg:w-[560px] lg:text-[14px]">
-        A 21-step grayscale ramp, 0–100% — the first pattern measured in almost every display
-        calibration. On an accurate screen each step reads as neutral gray, evenly brighter than
-        the last.
+      {/* Stacked on mobile; one row on desktop, each heading followed by its text */}
+      <figcaption className="flex flex-col gap-2 font-sans text-[13px] leading-[20px] text-muted lg:flex-row lg:text-[14px] lg:leading-[21px]">
+        <span className="shrink-0 font-medium text-ink">Grayscale Ramp</span>
+        <span className="min-w-px flex-1">
+          A series of gray tones ranging from black (0%) to white (100%), used to check grayscale
+          accuracy and identify unwanted color tints or inconsistencies in brightness across the
+          range.
+        </span>
+        <span className="shrink-0 font-medium text-ink">What to look for</span>
+        <span className="min-w-px flex-1">
+          Each shade should appear neutral, without noticeable red, green, or blue tints. Brightness
+          should transition smoothly from black to white without unexpected jumps or visible banding.
+        </span>
       </figcaption>
     </figure>
   );
