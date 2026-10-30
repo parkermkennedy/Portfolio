@@ -1,19 +1,8 @@
 import { Link } from 'react-router-dom';
 import Icon from './Icon.jsx';
-import { CaseStudySection, NextProjectFooter, TlDr } from './CaseStudy.jsx';
+import { CaseStudySection, NextProjectFooter, Plate, TlDr } from './CaseStudy.jsx';
 import { PageSlot } from './Layout.jsx';
 import useDocumentTitle from '../lib/useDocumentTitle.js';
-
-function Shot({ caption, src, alt, imgClassName }) {
-  return (
-    <figure className="flex min-w-px flex-1 flex-col gap-4">
-      <figcaption className="font-sans text-[13px] font-medium uppercase tracking-[0.08em] text-plate-label">
-        {caption}
-      </figcaption>
-      <img src={src} alt={alt} className={`h-auto w-full object-cover ${imgClassName}`} />
-    </figure>
-  );
-}
 
 /**
  * A public case study: header with meta and TL;DR, a Before / After plate,
@@ -48,10 +37,7 @@ export default function CaseStudyPage({ cs, before, after, imgClassName = 'lg:h-
       </header>
 
       <div className="gutter">
-        <div className="flex flex-col items-stretch gap-6 overflow-clip rounded-[4px] bg-plate px-5 py-6 lg:flex-row lg:p-[72px]">
-          <Shot caption="Before" {...before} imgClassName={imgClassName} />
-          <Shot caption="After" {...after} imgClassName={imgClassName} />
-        </div>
+        <Plate shots={[{ caption: 'Before', ...before }, { caption: 'After', ...after }]} imgClassName={imgClassName} />
       </div>
 
       <section className="gutter flex flex-col gap-6 pb-14 pt-16 lg:flex-row lg:gap-24 lg:pb-24 lg:pt-[120px]">

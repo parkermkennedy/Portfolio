@@ -1,3 +1,5 @@
+import { asset } from './lib/assets.js';
+
 export const JOBS = [
   {
     dates: '2024 — Now',
@@ -186,6 +188,77 @@ export const CASE_STUDY_CALMAN5 = {
         {
           type: 'p',
           text: 'A configuration page lets engineers edit targets and other parts of the calibration process in one place. With the template, building a new workflow takes minutes instead of days, and updates are simple: engineers know exactly where and how to change something instead of searching the whole workflow for one action.',
+        },
+      ],
+    },
+    {
+      title: 'Before & after',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Three pages from the LG AutoCal workflow, before and after moving to the template. Every page now shares one layout: a title with a one-line instruction, the primary action in the same spot, and detailed data tucked away until it’s needed.',
+        },
+      ],
+      // Full-width plates below the section text; each `shots` entry is { caption, src, alt }.
+      wide: [
+        {
+          title: 'Hardware setup',
+          text: 'Each step now leads with one clear primary action, with instructions grouped beside it. Recommended settings moved from dense paragraphs into a scannable table, and display connection got its own page.',
+          shots: [
+            {
+              caption: 'Before',
+              src: asset('c5-hardware-before.jpg'),
+              alt: 'The old Hardware Connect page: three rows for meter, pattern source and display, each with instructions on the left, Find and Open Settings Panel buttons in the middle, and recommended settings as paragraphs on the right',
+            },
+            {
+              caption: 'After',
+              src: asset('c5-hardware-after.jpg'),
+              alt: 'The redesigned Hardware Setup page: numbered steps for Find Meter, Find Source and Pattern Insertion, each with one large button, and lettered instructions beside them including a table of recommended window sizes by display type',
+            },
+          ],
+        },
+        {
+          title: 'Grayscale calibration',
+          text: 'Measure became the page’s primary action, and the raw data grid moved behind a Show Datagrid toggle. That freed space for the CIE chart and a ΔE ITP chart, so results read at a glance.',
+          shots: [
+            {
+              caption: 'Before',
+              src: asset('c5-grayscale-before.jpg'),
+              alt: 'The old Grayscale AutoCal page: RGB balance and DeltaE 2000 charts above a large table of raw measurement values, with EOTF and luminance charts on the right',
+            },
+            {
+              caption: 'After',
+              src: asset('c5-grayscale-after.jpg'),
+              alt: 'The redesigned Grayscale Multipoint page: a prominent Measure button and Show Datagrid toggle at the top, with EOTF, RGB balance, CIE 1976, luminance, DeltaE 2000 and DeltaE ITP charts',
+            },
+          ],
+        },
+        {
+          title: 'Post-calibration results',
+          text: 'A Display Performance summary now leads the page, showing average and max error for saturation sweeps, ColorChecker and grayscale, so users can judge the calibration without reading every chart.',
+          shots: [
+            {
+              caption: 'Before',
+              src: asset('c5-postcal-before.jpg'),
+              alt: 'The old Post Calibration Capture page: a gamut chart, RGB balance, EOTF, luminance and two DeltaE charts, with an empty notes panel',
+            },
+            {
+              caption: 'After',
+              src: asset('c5-postcal-after.jpg'),
+              alt: 'The redesigned SDR Post-Cal page: a Display Performance summary of average and max DeltaE for saturation sweeps, ColorChecker and grayscale, above two gamut charts, RGB balance, EOTF and DeltaE charts',
+            },
+          ],
+        },
+        {
+          title: 'Charts on demand',
+          text: 'Any chart on the results page can expand in place for a closer look, then collapse back. Detail stays available without crowding the default view.',
+          shots: [
+            {
+              caption: 'After · Expanded chart',
+              src: asset('c5-postcal-expanded.jpg'),
+              alt: 'The SDR Post-Cal page with the CIE 1976 gamut chart expanded to fill the left half of the page, with a close button in its corner',
+            },
+          ],
         },
       ],
     },

@@ -215,15 +215,63 @@ export function TlDr({ items }) {
   );
 }
 
-export function CaseStudySection({ section }) {
+function Shot({ caption, src, alt, imgClassName }) {
   return (
-    <section className="flex flex-col gap-6 border-t border-rule pb-14 pt-10 lg:flex-row lg:gap-24 lg:pb-[72px] lg:pt-14">
+    <figure className="flex min-w-px flex-1 flex-col gap-4">
+      <figcaption className="font-sans text-[13px] font-medium uppercase tracking-[0.08em] text-plate-label">
+        {caption}
+      </figcaption>
+      <img src={src} alt={alt} loading="lazy" className={`h-auto w-full object-cover ${imgClassName}`} />
+    </figure>
+  );
+}
+
+/** Dark plate of labeled screenshots, side by side on desktop. `shots` are { caption, src, alt }. */
+export function Plate({ shots, imgClassName = '' }) {
+  return (
+    <div className="flex flex-col items-stretch gap-6 overflow-clip rounded-[4px] bg-plate px-5 py-6 lg:flex-row lg:p-[72px]">
+      {shots.map((shot) => (
+        <Shot key={shot.src} {...shot} imgClassName={imgClassName} />
+      ))}
+    </div>
+  );
+}
+
+/** Full-width plate with a title and note underneath, for a section's `wide` entries. */
+function WidePlate({ item }) {
+  return (
+    <figure className="flex flex-col gap-6">
+      <Plate shots={item.shots} />
+      <figcaption className="flex flex-col gap-2 lg:max-w-[760px]">
+        <span className="font-sans text-[16px] font-medium leading-[1.4] lg:text-[18px]">{item.title}</span>
+        <span className={bodyText}>{item.text}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+export function CaseStudySection({ section }) {
+  const content = (
+    <>
       <h2 className={sectionTitle}>{section.title}</h2>
       <div className="flex flex-col gap-6 lg:w-[760px]">
         {section.blocks.map((block, i) => (
           <Block key={i} block={block} />
         ))}
       </div>
+    </>
+  );
+  const spacing = 'border-t border-rule pb-14 pt-10 lg:pb-[72px] lg:pt-14';
+
+  if (!section.wide) {
+    return <section className={`flex flex-col gap-6 lg:flex-row lg:gap-24 ${spacing}`}>{content}</section>;
+  }
+  return (
+    <section className={`flex flex-col gap-12 lg:gap-[72px] ${spacing}`}>
+      <div className="flex flex-col gap-6 lg:flex-row lg:gap-24">{content}</div>
+      {section.wide.map((item) => (
+        <WidePlate key={item.title} item={item} />
+      ))}
     </section>
   );
 }
