@@ -328,7 +328,7 @@
   font-family: var(--font-family-serif);
   font-size: 136px;
   font-weight: 300;
-  line-height: 125px;
+  line-height: 144px;
   letter-spacing: -0.03em;
 }
 
@@ -337,7 +337,7 @@
   font-size: 136px;
   font-weight: 300;
   font-style: italic;
-  line-height: 125px;
+  line-height: 144px;
   letter-spacing: -0.03em;
 }
 
@@ -345,7 +345,7 @@
   font-family: var(--font-family-serif);
   font-size: 120px;
   font-weight: 300;
-  line-height: 114px;
+  line-height: 128px;
   letter-spacing: -0.03em;
 }
 
@@ -433,7 +433,7 @@
   font-family: var(--font-family-serif);
   font-size: 60px;
   font-weight: 300;
-  line-height: 57px;
+  line-height: 64px;
   letter-spacing: -0.025em;
 }
 
@@ -442,7 +442,7 @@
   font-size: 60px;
   font-weight: 300;
   font-style: italic;
-  line-height: 57px;
+  line-height: 64px;
   letter-spacing: -0.025em;
 }
 

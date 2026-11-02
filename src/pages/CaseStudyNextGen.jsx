@@ -146,7 +146,7 @@ function Preview() {
           <Icon name="lock-red.svg" size={18} height={20} inset="-3.75% -4.17%" />
           Preview · full case study is password protected
         </p>
-        <h1 className="mt-5 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[0.95] tracking-[-0.03em] lg:mt-6">
+        <h1 className="mt-5 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[1.067] tracking-[-0.03em] lg:mt-6">
           {gate.title}
         </h1>
         <p className="mt-4 font-sans text-[18px] text-muted lg:mt-6 lg:text-[20px]">{gate.company}</p>
@@ -228,7 +228,7 @@ function CaseStudy({ cs, focusHeading }) {
 
         <h1
           ref={headingRef}
-          className="mt-12 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[0.95] tracking-[-0.03em] lg:mt-[72px]"
+          className="mt-12 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[1.067] tracking-[-0.03em] lg:mt-[72px]"
         >
           {gate.title}
         </h1>

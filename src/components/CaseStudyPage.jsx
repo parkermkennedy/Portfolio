@@ -19,7 +19,7 @@ export default function CaseStudyPage({ cs, before, after, imgClassName = 'lg:h-
           All work
         </Link>
 
-        <h1 className="mt-12 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[0.95] tracking-[-0.03em] lg:mt-[72px]">
+        <h1 className="mt-12 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[1.067] tracking-[-0.03em] lg:mt-[72px]">
           {cs.title}
         </h1>
         <p className="mt-4 font-sans text-[18px] text-muted lg:mt-6 lg:text-[20px]">{cs.company}</p>

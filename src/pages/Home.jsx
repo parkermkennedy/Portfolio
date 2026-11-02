@@ -15,7 +15,7 @@ const h2 =
 function Hero() {
   return (
     <section className="gutter flex flex-col gap-8 pb-14 pt-16 lg:gap-[72px] lg:pb-24 lg:pt-[120px]">
-      <h1 className="font-serif text-[clamp(60px,9.45vw,136px)] font-light leading-[0.95] tracking-[-0.03em] lg:leading-[0.92]">
+      <h1 className="font-serif text-[clamp(60px,9.45vw,136px)] font-light leading-[1.06] tracking-[-0.03em]">
         Making expert tools <br className="hidden lg:block" />
         feel <em className="font-light italic">effortless</em>
         <span className="text-accent">.</span>
