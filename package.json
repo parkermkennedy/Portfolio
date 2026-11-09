@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/postbuild.mjs",
+    "build": "node scripts/fix-resume-pdf.mjs && vite build && node scripts/postbuild.mjs",
     "preview": "vite preview",
     "assets": "bash scripts/fetch-assets.sh",
     "encrypt": "node scripts/encrypt.mjs",
-    "tokens": "node scripts/build-tokens.mjs"
+    "tokens": "node scripts/build-tokens.mjs",
+    "resume": "node scripts/fix-resume-pdf.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
