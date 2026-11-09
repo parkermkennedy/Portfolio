@@ -45,7 +45,7 @@ export const SKILL_COLUMNS = [
     label: 'Technical',
     joined: true,
     items: [
-      'React, JavaScript, HTML/CSS',
+      'Front-end literacy (React, JavaScript, HTML/CSS)',
       'Design-to-development handoff',
       'AI-assisted design & prototyping',
       'Python (working knowledge)',
