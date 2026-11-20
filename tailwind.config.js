@@ -11,6 +11,7 @@ export default {
         paper: token('background-primary'),
         sand: token('background-secondary'),
         ink: token('text-primary'),
+        inverse: token('background-inverse'),
         muted: token('text-secondary'),
         rule: token('border-default'),
         accent: token('accent-default'),

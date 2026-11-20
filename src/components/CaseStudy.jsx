@@ -279,7 +279,7 @@ export function CaseStudySection({ section }) {
 /** Dark footer at the end of a case study, linking to the next project. */
 export function NextProjectFooter({ label, title, to }) {
   return (
-    <footer className="flex flex-col gap-6 bg-ink px-5 pb-8 pt-14 text-paper lg:px-[120px] lg:pb-14 lg:pt-24">
+    <footer className="flex flex-col gap-6 bg-inverse px-5 pb-8 pt-14 text-paper lg:px-[120px] lg:pb-14 lg:pt-24">
       <p className="label !text-dark-muted">{label}</p>
       <Link to={to} className="flex items-center justify-between gap-6">
         <span className="font-serif text-[clamp(40px,6.1vw,88px)] font-light leading-none tracking-[-0.025em]">

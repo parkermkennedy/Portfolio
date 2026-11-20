@@ -195,7 +195,7 @@ function NdaBanner() {
     <PageSlot name="banner">
       <aside
         aria-label="Confidentiality notice"
-        className="flex items-center justify-center gap-3 bg-ink px-5 py-[14px] text-paper"
+        className="flex items-center justify-center gap-3 bg-inverse px-5 py-[14px] text-paper"
       >
         <Icon name="lock.svg" size={14} height={16} inset="-4.69% -5.36%" className="shrink-0" />
         <p className="font-sans text-[13px] leading-[1.4] lg:text-[14px]">

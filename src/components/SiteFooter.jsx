@@ -15,7 +15,7 @@ function ResumeLink({ className = '' }) {
 
 export default function SiteFooter() {
   return (
-    <footer className="flex flex-col gap-7 bg-ink px-5 pb-8 pt-14 text-paper lg:gap-20 lg:px-[120px] lg:pb-14 lg:pt-[120px]">
+    <footer className="flex flex-col gap-7 bg-inverse px-5 pb-8 pt-14 text-paper lg:gap-20 lg:px-[120px] lg:pb-14 lg:pt-[120px]">
       <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
         <div className="flex flex-col gap-7 lg:gap-5">
           <h2 className="font-serif text-[52px] font-light leading-none tracking-[-0.02em] lg:text-[clamp(64px,7.8vw,112px)] lg:leading-[0.95] lg:tracking-[-0.03em]">
