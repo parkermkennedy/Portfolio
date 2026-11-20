@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Icon from './Icon.jsx';
+import Icon, { maskStyle } from './Icon.jsx';
 import Seal from './Seal.jsx';
-import { asset, EMAIL } from '../lib/assets.js';
+import ThemeToggle from './ThemeToggle.jsx';
+import { EMAIL } from '../lib/assets.js';
 
 const LINKS = [
   { label: 'Work', to: '/#work' },
@@ -68,20 +69,24 @@ export default function Nav() {
             Email
             <Icon name="arrow-ext.svg" />
           </a>
+          <ThemeToggle className="-mx-3 -my-2" />
         </div>
 
-        {/* Mobile menu button */}
-        <button
-          ref={menuButton}
-          type="button"
-          className="relative size-11 lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen((o) => !o)}
-        >
-          <img src={asset('menu-button.svg')} alt="" className="absolute inset-0 block size-full max-w-none" />
-        </button>
+        {/* Mobile: theme toggle and menu button */}
+        <div className="flex items-center lg:hidden">
+          <ThemeToggle />
+          <button
+            ref={menuButton}
+            type="button"
+            className="relative size-11"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span className="absolute inset-0 block" style={maskStyle('menu-button.svg')} />
+          </button>
+        </div>
       </nav>
 
       {open && (

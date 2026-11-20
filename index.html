@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parker Kennedy — UX/UI design for calibration software</title>
     <meta name="description" content="Parker Kennedy is a UX/UI engineer in Seattle designing color-calibration software at Portrait Displays." />
+    <!-- Set the theme before first paint: the visitor's saved choice, else their system setting. -->
+    <script>
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <link rel="icon" type="image/png" href="/assets/seal.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

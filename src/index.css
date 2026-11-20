@@ -6,7 +6,9 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; color-scheme: light; }
+  /* Native controls and scrollbars follow the theme too */
+  html[data-theme='dark'] { color-scheme: dark; }
   body {
     @apply bg-paper font-sans text-ink antialiased;
   }

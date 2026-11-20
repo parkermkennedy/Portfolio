@@ -16,7 +16,7 @@ export default {
         accent: token('accent-default'),
         error: token('text-error'),
         plate: token('surface-plate'),
-        'plate-label': token('text-inverse-secondary'),
+        'plate-label': token('text-on-plate'),
         'dark-rule': token('border-inverse'),
         'dark-muted': token('text-inverse-secondary'),
       },

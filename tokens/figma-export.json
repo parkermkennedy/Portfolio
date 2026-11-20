@@ -749,6 +749,18 @@
             }
           }
         },
+        "text/on-plate": {
+          "type": "COLOR",
+          "css": "var(--text-on-plate)",
+          "values": {
+            "Light": {
+              "alias": "color/neutral/300"
+            },
+            "Dark": {
+              "alias": "color/neutral/600"
+            }
+          }
+        },
         "border/default": {
           "type": "COLOR",
           "css": "var(--border-default)",
@@ -1081,7 +1093,7 @@
               "alias": "color/neutral/0"
             },
             "Dark": {
-              "alias": "color/neutral/100"
+              "alias": "color/neutral/0"
             }
           }
         },

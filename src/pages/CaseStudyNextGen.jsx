@@ -79,7 +79,7 @@ function Gate({ onUnlock }) {
               }}
               aria-invalid={wrong}
               aria-describedby={wrong || failed ? 'case-study-password-error' : undefined}
-              className={`h-14 w-full rounded-[2px] border bg-white px-4 font-sans text-[18px] text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-sand ${
+              className={`h-14 w-full rounded-[2px] border bg-[var(--input-background)] px-4 font-sans text-[18px] text-ink outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-sand ${
                 wrong ? 'border-accent' : 'border-ink'
               }`}
             />

@@ -88,6 +88,7 @@
   --text-error: var(--color-error-600);
   --text-inverse: var(--color-neutral-50);
   --text-inverse-secondary: var(--color-neutral-300);
+  --text-on-plate: var(--color-neutral-300);
   --border-default: var(--color-neutral-200);
   --border-subtle: var(--color-neutral-100);
   --border-strong: var(--color-neutral-900);
@@ -167,6 +168,7 @@
   --text-error-rgb: 169 52 52;
   --text-inverse-rgb: 245 243 238;
   --text-inverse-secondary-rgb: 184 181 173;
+  --text-on-plate-rgb: 184 181 173;
   --border-default-rgb: 216 212 203;
   --border-subtle-rgb: 236 233 226;
   --border-strong-rgb: 21 21 21;
@@ -222,7 +224,7 @@
   --shadow-image: 0px 24px 60px 0px #00000073;
 }
 
-/* Dark mode (opt-in): add data-theme="dark" to <html>. */
+/* Dark mode: data-theme="dark" on <html>, set by index.html and the nav's theme toggle. */
 [data-theme='dark'] {
   /* Primitives */
   --color-primary-50: #2a0c11;
@@ -258,7 +260,7 @@
   --background-elevated: var(--color-neutral-100);
   --surface-default: var(--color-neutral-100);
   --surface-plate: var(--color-neutral-100);
-  --input-background: var(--color-neutral-100);
+  --text-on-plate: var(--color-neutral-600);
   /* Semantic colors as RGB channels */
   --background-primary-rgb: 21 21 21;
   --background-secondary-rgb: 28 28 27;
@@ -302,7 +304,7 @@
   --button-destructive-foreground-rgb: 21 21 21;
   --button-destructive-hover-rgb: 245 154 154;
   --button-destructive-active-rgb: 245 154 154;
-  --input-background-rgb: 28 28 27;
+  --input-background-rgb: 15 15 14;
   --input-foreground-rgb: 245 243 238;
   --input-placeholder-rgb: 110 106 99;
   --input-border-rgb: 245 243 238;

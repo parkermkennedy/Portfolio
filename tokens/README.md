@@ -22,6 +22,6 @@ Figma is the source of truth. This folder holds a snapshot of it.
 - **Tailwind:** the existing color names (`paper`, `ink`, `muted`, `rule`, `accent`, `plate`, …) and font families in `tailwind.config.js` point at the tokens. Keep using `bg-paper`, `text-muted`, `bg-ink/90`, etc.
 - **CSS variables:** any token by its Figma code-syntax name, e.g. `var(--text-secondary)`, `var(--spacing-24)`, `var(--component-radius-sm)`, `var(--shadow-image)`.
 - **Text styles:** each Figma text style is a class. `text/h1` → `.type-h1`, `text/body/large` → `.type-body-large`, `text/mobile/display` → `.type-mobile-display`.
-- **Dark mode:** the tokens include it, but it's off. Setting `data-theme="dark"` on `<html>` switches every token.
+- **Dark mode:** `data-theme="dark"` on `<html>` switches every token. An inline script in `index.html` sets it before first paint (the visitor's saved choice, else their system setting) and the nav's theme toggle (`src/lib/theme.js`) changes it. Icons are drawn as CSS masks in the current text color, so they follow the theme.
 
 Don't edit the generated files by hand. The next `npm run tokens` overwrites them.

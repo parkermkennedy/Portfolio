@@ -94,7 +94,7 @@ ${declarations('Light')}
 ${src.effectStyles.map((s) => `  --shadow-${s.name.replace(/^elevation\//, '')}: ${shadow(s.effects)};`).join('\n')}
 }
 
-/* Dark mode (opt-in): add data-theme="dark" to <html>. */
+/* Dark mode: data-theme="dark" on <html>, set by index.html and the nav's theme toggle. */
 [data-theme='dark'] {
 ${declarations('Dark', { onlyChanged: true })}
 }
