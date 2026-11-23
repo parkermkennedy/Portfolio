@@ -90,7 +90,7 @@ function Gate({ onUnlock }) {
             className="inline-flex w-full items-center justify-center gap-3 rounded-[2px] bg-ink px-6 py-[18px] font-sans text-[16px] font-medium text-paper disabled:cursor-wait disabled:opacity-80"
           >
             {status === 'checking' ? 'Unlocking…' : 'View case study'}
-            <Icon name="arrow-right-light.svg" />
+            <Icon name="arrow-right" />
           </button>
 
           <div aria-live="polite">
@@ -117,7 +117,7 @@ function Gate({ onUnlock }) {
               className="inline-flex w-full items-center justify-center gap-3 rounded-[2px] border border-ink px-6 py-[14px] font-sans text-[16px] font-medium text-ink"
             >
               Request access
-              <Icon name="arrow-ext.svg" />
+              <Icon name="arrow-up-right" />
             </a>
             <p className="font-sans text-[13px] leading-[1.5] text-muted">
               Opens your email app. Or write to{' '}
@@ -138,12 +138,12 @@ function Preview() {
     <>
       <header className="gutter pb-12 pt-10 lg:pb-[72px] lg:pt-16">
         <Link to="/#work" className="text-link">
-          <Icon name="arrow-left.svg" />
+          <Icon name="arrow-left" />
           All work
         </Link>
 
         <p className="mt-12 flex items-center gap-[10px] font-sans text-[15px] font-medium text-accent lg:mt-[72px] lg:text-[16px]">
-          <Icon name="lock-red.svg" size={18} height={20} inset="-3.75% -4.17%" />
+          <Icon name="lock" size={20} />
           Preview · full case study is password protected
         </p>
         <h1 className="mt-5 font-serif text-[clamp(48px,8.3vw,120px)] font-light leading-[1.067] tracking-[-0.03em] lg:mt-6">
@@ -197,7 +197,7 @@ function NdaBanner() {
         aria-label="Confidentiality notice"
         className="flex items-center justify-center gap-3 bg-inverse px-5 py-[14px] text-paper"
       >
-        <Icon name="lock.svg" size={14} height={16} inset="-4.69% -5.36%" className="shrink-0" />
+        <Icon name="lock" className="shrink-0" />
         <p className="font-sans text-[13px] leading-[1.4] lg:text-[14px]">
           Confidential: this case study covers an unreleased product and is shared under NDA. Please
           don’t share it or take screenshots.
@@ -222,7 +222,7 @@ function CaseStudy({ cs, focusHeading }) {
 
       <header className="gutter pb-12 pt-10 lg:pb-[72px] lg:pt-16">
         <Link to="/#work" className="text-link">
-          <Icon name="arrow-left.svg" />
+          <Icon name="arrow-left" />
           All work
         </Link>
 

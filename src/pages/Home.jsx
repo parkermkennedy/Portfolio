@@ -85,7 +85,7 @@ function SelectedWork() {
         link={
           <Link to="/work/next-gen-calman" className="text-link">
             Preview case study<span className="sr-only">: Next-Gen Calman</span>
-            <Icon name="arrow-right.svg" />
+            <Icon name="arrow-right" />
           </Link>
         }
       />
@@ -110,7 +110,7 @@ function SelectedWork() {
         link={
           <Link to="/work/calman-5-workflow-makeover" className="text-link">
             View case study<span className="sr-only">: Calman 5 Workflow Makeover</span>
-            <Icon name="arrow-right.svg" />
+            <Icon name="arrow-right" />
           </Link>
         }
       />
@@ -136,7 +136,7 @@ function SelectedWork() {
         link={
           <Link to="/work/portfolio-rebuild" className="text-link">
             View case study<span className="sr-only">: Portfolio rebuild</span>
-            <Icon name="arrow-right.svg" />
+            <Icon name="arrow-right" />
           </Link>
         }
       />
@@ -210,7 +210,7 @@ function Resume() {
           className="inline-flex items-center justify-center gap-3 rounded-[2px] bg-ink px-6 py-4 font-sans text-[16px] font-medium text-paper"
         >
           Download PDF
-          <Icon name="arrow-down.svg" />
+          <Icon name="arrow-down" />
         </a>
       </div>
 

@@ -71,15 +71,6 @@ function Block({ block }) {
   }
 }
 
-function LoopIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="shrink-0">
-      <path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M12.5 1.5v3h-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 /** One numbered step the user performs, joined to the next by a vertical line. */
 function FlowStep({ n, text, last }) {
   return (
@@ -119,7 +110,7 @@ function Flow({ block }) {
                       <li key={item.label} className="flex flex-col gap-4 rounded-[4px] border border-dashed border-accent p-4">
                         <div className="flex flex-col gap-1">
                           <p className="flex items-center gap-2 font-sans text-[14px] font-medium text-accent">
-                            <LoopIcon />
+                            <Icon name="repeat" />
                             {item.label}
                           </p>
                           <p className="font-sans text-[13px] leading-[1.4] text-muted">{item.note}</p>
@@ -285,7 +276,7 @@ export function NextProjectFooter({ label, title, to }) {
         <span className="font-serif text-[clamp(40px,6.1vw,88px)] font-light leading-none tracking-[-0.025em]">
           {title}
         </span>
-        <Icon name="arrow-right-light-lg.svg" size={56} inset="-1.34%" className="hidden lg:inline-block" />
+        <Icon name="arrow-right" size={56} className="hidden lg:inline-block" />
       </Link>
 
       <div className="mt-8 flex flex-col gap-4 border-t border-dark-rule pt-6 lg:mt-14 lg:flex-row lg:items-center lg:justify-between">
@@ -293,7 +284,7 @@ export function NextProjectFooter({ label, title, to }) {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline">
             {EMAIL}
-            <Icon name="arrow-external.svg" />
+            <Icon name="arrow-up-right" />
           </a>
           <a
             href={LINKEDIN_URL}
@@ -303,11 +294,11 @@ export function NextProjectFooter({ label, title, to }) {
           >
             LinkedIn
             <span className="sr-only"> (opens in a new tab)</span>
-            <Icon name="arrow-external.svg" />
+            <Icon name="arrow-up-right" />
           </a>
           <a href={RESUME_URL} download={RESUME_FILENAME} className="inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline">
             Download résumé
-            <Icon name="arrow-down.svg" />
+            <Icon name="arrow-down" />
           </a>
         </div>
       </div>

@@ -29,12 +29,14 @@ Re-run it whenever you edit the content or change the password. Keep a backup of
 
 ```bash
 npm install
-npm run assets   # downloads images/icons from Figma into public/assets (see note below)
+npm run assets   # downloads images from Figma into public/assets (see note below)
 npm run dev
 ```
 
 **Assets:** the URLs in `scripts/fetch-assets.sh` are temporary Figma export links (about 7 days). If they have expired, export these from Figma and save into `public/assets/` with the same names:
-`seal.png`, `nextgen-preview-blurred.jpg` (committed; blur is baked in, regenerate it from a sharp export rather than fetching), `c5-before.png`, `c5-after.png`, `about-photo.png`, `about-photo-mobile.png`, `cs-before.png`, `cs-after.png`, and SVGs `arrow-ext`, `arrow-external`, `arrow-right`, `arrow-down`, `arrow-left`, `lock`, `menu-button`.
+`seal.png`, `nextgen-preview-blurred.jpg` (committed; blur is baked in, regenerate it from a sharp export rather than fetching), `c5-before.png`, `c5-after.png`, `about-photo.png`, `about-photo-mobile.png`, `cs-before.png`, `cs-after.png`.
+
+**Icons:** the icons are not image files. They are drawn in `src/components/Icon.jsx`, one path per icon on a 16 × 16 frame with a 1.5px stroke, and match the Icons section of the Personal Design System Figma file. To add one, draw it in Figma to the same rules and copy its path into that file.
 
 **Résumé:** add your PDF at `public/resume.pdf` (the "Download PDF" / "Download résumé" links point to `/resume.pdf`). Figma's export has an untidy text layer (it reads as "B uilt", "wit h"), so `npm run build` cleans it first, which means every push to `main` deploys a PDF that copy, search, and résumé scanners read as whole words. Run `npm run resume` to clean the committed file too.
 

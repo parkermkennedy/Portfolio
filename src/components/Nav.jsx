@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Icon, { maskStyle } from './Icon.jsx';
+import Icon from './Icon.jsx';
 import Seal from './Seal.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
 import { EMAIL } from '../lib/assets.js';
@@ -67,7 +67,7 @@ export default function Nav() {
             className="inline-flex items-center gap-[10px] font-sans text-[16px] font-medium underline"
           >
             Email
-            <Icon name="arrow-ext.svg" />
+            <Icon name="arrow-up-right" />
           </a>
           <ThemeToggle className="-mx-3 -my-2" />
         </div>
@@ -78,13 +78,13 @@ export default function Nav() {
           <button
             ref={menuButton}
             type="button"
-            className="relative size-11"
+            className="inline-flex size-11 items-center justify-center"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
             onClick={() => setOpen((o) => !o)}
           >
-            <span className="absolute inset-0 block" style={maskStyle('menu-button.svg')} />
+            <Icon name="menu" size={20} />
           </button>
         </div>
       </nav>
@@ -113,7 +113,7 @@ export default function Nav() {
                 className="inline-flex items-center gap-[10px] py-4 font-sans text-[16px] font-medium underline"
               >
                 Email
-                <Icon name="arrow-ext.svg" />
+                <Icon name="arrow-up-right" />
               </a>
             </li>
           </ul>

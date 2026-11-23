@@ -15,7 +15,7 @@ export default function CaseStudyPage({ cs, before, after, imgClassName = 'lg:h-
     <>
       <header className="gutter pb-12 pt-10 lg:pb-[72px] lg:pt-16">
         <Link to="/#work" className="text-link">
-          <Icon name="arrow-left.svg" />
+          <Icon name="arrow-left" />
           All work
         </Link>
 

@@ -8,7 +8,7 @@ function ResumeLink({ className = '' }) {
   return (
     <a href={RESUME_URL} download={RESUME_FILENAME} className={`${linkBase} font-sans text-[16px] font-medium text-paper underline ${className}`}>
       Download résumé
-      <Icon name="arrow-down.svg" />
+      <Icon name="arrow-down" />
     </a>
   );
 }
@@ -30,7 +30,7 @@ export default function SiteFooter() {
               className={`${linkBase} font-serif text-[24px] font-light underline lg:text-[28px]`}
             >
               {EMAIL}
-              <Icon name="arrow-external.svg" />
+              <Icon name="arrow-up-right" />
             </a>
             <a
               href={LINKEDIN_URL}
@@ -40,7 +40,7 @@ export default function SiteFooter() {
             >
               LinkedIn
               <span className="sr-only"> (opens in a new tab)</span>
-              <Icon name="arrow-external.svg" />
+              <Icon name="arrow-up-right" />
             </a>
             {/* On mobile the résumé link lives with the contact links */}
             <ResumeLink className="lg:hidden" />

@@ -16,8 +16,8 @@ export default function NextGenPlate() {
       />
 
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-[10px] rounded-[2px] bg-ink/90 px-[14px] py-[10px] text-paper lg:gap-3 lg:px-6 lg:py-4">
-        <Icon name="lock.svg" size={14} inset="-4.69% -5.36%" className="lg:hidden" />
-        <Icon name="lock.svg" size={18} inset="-3.75% -4.17%" className="hidden lg:inline-block" />
+        <Icon name="lock" className="lg:hidden" />
+        <Icon name="lock" size={20} className="hidden lg:inline-block" />
         <span className="whitespace-nowrap font-sans text-[13px] font-medium lg:text-[16px]">
           <span className="lg:hidden">Password protected</span>
           <span className="hidden lg:inline">Unreleased product · password protected</span>

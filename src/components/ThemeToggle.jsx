@@ -13,7 +13,7 @@ export default function ThemeToggle({ className = '' }) {
       className={`inline-flex size-11 items-center justify-center text-ink ${className}`}
     >
       {/* Shows the theme you'd switch to */}
-      <Icon name={dark ? 'sun.svg' : 'moon.svg'} size={20} inset="0" />
+      <Icon name={dark ? 'sun' : 'moon'} />
     </button>
   );
 }

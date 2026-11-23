@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Downloads the exported images/icons from the Figma file into public/assets.
+# Downloads the exported images from the Figma file into public/assets.
+# Icons are not downloaded: they are drawn in src/components/Icon.jsx.
 #
 # These URLs come from Figma's MCP server and are TEMPORARY (they expire ~7 days
 # after they were generated). If a download fails, re-export the asset from
@@ -22,14 +23,5 @@ get about-photo.png        4fc7e48c-811f-45c0-acd4-f765718e5215.png
 get about-photo-mobile.png 68d2a8fd-836c-4717-8daa-a34187d7d4f3.png
 get cs-before.png          bfea5420-c35c-4a07-bf64-976e62f5c33e.png
 get cs-after.png           e828bcc8-8ee7-4c74-b413-65cd167e43dd.png
-
-# Icons (SVG)
-get arrow-ext.svg          974f26ad-306c-46a9-b429-2450ad5864bf.svg
-get arrow-external.svg     a4d44487-a647-47a3-baa0-24a05737ad27.svg
-get arrow-right.svg        1acce703-3ef0-4613-a546-0e61c1b00165.svg
-get arrow-down.svg         72c422c9-70b6-4084-b189-d2d054d77163.svg
-get arrow-left.svg         84e6243f-60c8-431f-8443-7fc7bff1331c.svg
-get lock.svg               daf931af-fbb4-49e8-b665-e822420c73fb.svg
-get menu-button.svg        81793f47-e004-4d41-940c-43c3d8ac566d.svg
 
 echo "Done. Assets saved to public/assets"
